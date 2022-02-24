@@ -1,6 +1,5 @@
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Orbitron:wght@400;500&display=swap');
 
 /* general styles */
 * {
@@ -17,24 +16,77 @@ body {
     font-size: 2rem;
     font-family: Courier, monospace;
     font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 /* Main wrapper styles */
 .main-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-
+    width: 95%;
+    max-width: 500px;
 }
 
 /* Menu styles */
 .menu {
+    font-family: Orbitron, monospace;
+    transform: translateY(-20%);
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
 
+#game-title {
+    font-family: Luckiest Guy, Orbitron, monospace;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #FF0002;
+    width: 100%;
+    text-align: center;
+    border: black solid 1px;
+}
+
+.menu-options {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .menu-tile {
-    font-family: Orbitron, monospace;
+    position: relative;
+    width: 50%;
+    padding-top: 50%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border-style: outset;
+
+}
+
+.red-tile {
+    background-color: #FF0002;
+}
+
+.green-tile {
+    background-color: #00DE3E;
+}
+
+.blue-tile {
+    background-color: #0000FF;
+}
+
+.yellow-tile {
+    background-color: #FFD400;
+}
+
+.menu-tile > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 /* Game area styles */
