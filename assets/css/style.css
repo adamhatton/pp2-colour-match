@@ -19,6 +19,30 @@ body {
     font-weight: 500;
 }
 
+/* Main wrapper styles */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+
+/* Menu styles */
+.menu {
+
+}
+
 .menu-tile {
     font-family: Orbitron, monospace;
+}
+
+/* Game area styles */
+.game-area {
+    display: none;
+}
+
+/* Rules styles */
+.rules {
+    display: none;
 }
