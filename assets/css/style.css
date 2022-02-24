@@ -31,22 +31,23 @@ body {
 }
 
 /* Menu styles */
-.menu {
+#menu {
     font-family: Orbitron, monospace;
-    transform: translateY(-20%);
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    padding: 1rem;
+    background-color:blanchedalmond;
+    border-radius: 1rem;
 }
 
-#game-title {
+.title {
     font-family: Luckiest Guy, Orbitron, monospace;
-    font-size: 3rem;
+    font-size: 4rem;
     text-transform: uppercase;
     color: #FF0002;
     width: 100%;
     text-align: center;
-    border: black solid 1px;
 }
 
 .menu-options {
@@ -62,23 +63,6 @@ body {
     box-sizing: border-box;
     border-radius: 10px;
     border-style: outset;
-
-}
-
-.red-tile {
-    background-color: #FF0002;
-}
-
-.green-tile {
-    background-color: #00DE3E;
-}
-
-.blue-tile {
-    background-color: #0000FF;
-}
-
-.yellow-tile {
-    background-color: #FFD400;
 }
 
 .menu-tile > p {
@@ -89,12 +73,79 @@ body {
     text-align: center;
 }
 
+.red-tile {
+    background-color: rgba(255, 0, 2, 0.7);
+}
+
+.green-tile {
+    background-color: rgba(0, 222, 62, 0.7);
+}
+
+.blue-tile {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+.yellow-tile {
+    background-color: rgba(255, 212, 0, 0.6);
+}
+
+.red-tile:hover {
+    background-color: rgba(255, 0, 2, 1);
+}
+
+.green-tile:hover {
+    background-color: rgba(0, 222, 62, 1);
+}
+
+.blue-tile:hover {
+    background-color: rgba(0, 0, 255, 0.8);
+}
+
+.yellow-tile:hover {
+    background-color: rgba(255, 212, 0, 1);
+}
+
 /* Game area styles */
 .game-area {
     display: none;
 }
 
-/* Rules styles */
-.rules {
+/* Rules modal styles */
+.rules-modal {
     display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
 }
+
+.rules-content {
+    background-color: blanchedalmond;
+    margin: 20% auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    transform: translateY(-20%);
+    }
+
+.close-btn {
+    align-self: end;
+    font-size: 4rem;
+    padding: 1rem 1rem 0 0;
+    line-height: 1.6rem;
+}
+
+.close-btn:hover, .close-btn:focus {
+    cursor: pointer;
+}
+
+.rules-content > p {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
