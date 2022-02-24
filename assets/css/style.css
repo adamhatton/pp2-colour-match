@@ -1,0 +1,24 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap');
+
+
+/* general styles */
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 2rem;
+    font-family: Courier, monospace;
+    font-weight: 500;
+}
+
+.menu-tile {
+    font-family: Orbitron, monospace;
+}
