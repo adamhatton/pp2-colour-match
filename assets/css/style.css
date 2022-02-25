@@ -120,7 +120,7 @@ body {
     text-align: center;
 }
 
-.menu-btn {
+.btn {
     font-family: Orbitron, Courier, monospace;
     font-weight: bolder;
     padding: 1rem;
@@ -131,9 +131,15 @@ body {
     font-size: 1.6rem;
 }
 
-.menu-btn:hover {
+.btn:hover {
     background-color: black;
     color: whitesmoke;
+}
+
+.level {
+    font-family: Orbitron, Courier, monospace;
+    margin: 1rem auto;
+    text-transform: uppercase;
 }
 
 /* Rules modal styles */

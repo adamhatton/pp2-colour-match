@@ -1,11 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    //Show game area and hide menu
     let playBtn = document.getElementById('play-btn');
     playBtn.addEventListener('click', function(){
         document.getElementsByClassName('game-area')[0].style.display = 'flex';
         document.getElementById('menu').style.display = 'none';
     })
-    
+
+    //Hide game area and show menu
+    let menuBtn = document.getElementById('menu-btn');
+    menuBtn.addEventListener('click', function(){
+        document.getElementsByClassName('game-area')[0].style.display = 'none';
+        document.getElementById('menu').style.display = 'flex';
+    })
     
     //Show rules modal
     let rulesBtn = document.getElementById('rules-btn');
