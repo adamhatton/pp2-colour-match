@@ -140,6 +140,8 @@ body {
     font-family: Orbitron, Courier, monospace;
     margin: 1rem auto;
     text-transform: uppercase;
+    animation-name: slide;
+    animation-duration: 1.5s;
 }
 
 /* Rules modal styles */
@@ -179,4 +181,10 @@ body {
 .rules-content > p {
     padding: 2rem 1rem;
     text-align: center;
+}
+
+@keyframes slide {
+    0% {visibility: hidden; height: 0; opacity: 0}
+    50% {visibility: visible; height: 25px; opacity: 0}
+    100% {visibility: visible; height: 25px; opacity: 1}
 }
