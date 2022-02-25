@@ -56,7 +56,7 @@ body {
     flex-wrap: wrap;
 }
 
-.menu-tile {
+.tile {
     position: relative;
     width: 50%;
     padding-top: 50%;
@@ -65,7 +65,7 @@ body {
     border-style: outset;
 }
 
-.menu-tile > p {
+.tile > p {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -89,25 +89,35 @@ body {
     background-color: rgba(255, 212, 0, 0.6);
 }
 
-.red-tile:hover {
+.menu-red-tile:hover {
     background-color: rgba(255, 0, 2, 1);
 }
 
-.green-tile:hover {
+.menu-green-tile:hover {
     background-color: rgba(0, 222, 62, 1);
 }
 
-.blue-tile:hover {
+.menu-blue-tile:hover {
     background-color: rgba(0, 0, 255, 0.8);
 }
 
-.yellow-tile:hover {
+.menu-yellow-tile:hover {
     background-color: rgba(255, 212, 0, 1);
 }
 
 /* Game area styles */
 .game-area {
     display: none;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.menu-btn {
+    margin: 0 auto;
+}
+
+.btn-holder {
+    width: 100%;
 }
 
 /* Rules modal styles */

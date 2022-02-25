@@ -25,16 +25,16 @@
                     class="game-title-letter"> Match</span>
             </div>
             <div class="menu-options">
-                <div id="play-btn" class="menu-tile red-tile">
+                <div id="play-btn" class="tile red-tile menu-red-tile">
                     <p>Play</p>
                 </div>
-                <div id="rules-btn" class="menu-tile green-tile">
+                <div id="rules-btn" class="tile green-tile menu-green-tile">
                     <p>Rules</p>
                 </div>
-                <div class="menu-tile blue-tile">
+                <div class="tile blue-tile menu-blue-tile">
                     <p>High Score</p>
                 </div>
-                <div class="menu-tile yellow-tile">
+                <div class="tile yellow-tile menu-yellow-tile">
                     <p>About</p>
                 </div>
             </div>
@@ -42,11 +42,13 @@
 
         <!-- game wrapper -->
         <div class="game-area">
-            <button>Menu</button>
-            <div class="game-button">Green</div>
-            <div class="game-button">Red</div>
-            <div class="game-button">Yellow</div>
-            <div class="game-button">Blue</div>
+            <div class="btn-holder">
+                <button class="menu-btn">Menu</button>
+            </div>            
+            <div class="tile red-tile"></div>
+            <div class="tile green-tile"></div>
+            <div class="tile blue-tile"></div>
+            <div class="tile yellow-tile"></div>
             <div class="level">Level: 0</div>
         </div>
     </div>
