@@ -89,19 +89,19 @@ body {
     background-color: rgba(255, 212, 0, 0.6);
 }
 
-.menu-red-tile:hover {
+.red-tile:hover {
     background-color: rgba(255, 0, 2, 1);
 }
 
-.menu-green-tile:hover {
+.green-tile:hover {
     background-color: rgba(0, 222, 62, 1);
 }
 
-.menu-blue-tile:hover {
+.blue-tile:hover {
     background-color: rgba(0, 0, 255, 0.8);
 }
 
-.menu-yellow-tile:hover {
+.yellow-tile:hover {
     background-color: rgba(255, 212, 0, 1);
 }
 
@@ -134,6 +134,26 @@ body {
 .btn:hover {
     background-color: black;
     color: whitesmoke;
+}
+
+#red-btn {
+    background-color: #FF0002;
+    opacity: 0.7;
+}
+
+#green-btn {
+    background-color: #00DE3E;
+    opacity: 0.7;
+}
+
+#blue-btn {
+    background-color: #0000FF;
+    opacity: 0.5;
+}
+
+#yellow-btn {
+    background-color: #FFD400;
+    opacity: 0.6;
 }
 
 .level {
