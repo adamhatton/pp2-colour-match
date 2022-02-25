@@ -110,14 +110,30 @@ body {
     display: none;
     width: 100%;
     flex-wrap: wrap;
-}
-
-.menu-btn {
-    margin: 0 auto;
+    padding: 1rem;
+    background-color:blanchedalmond;
+    border-radius: 1rem;
 }
 
 .btn-holder {
     width: 100%;
+    text-align: center;
+}
+
+.menu-btn {
+    font-family: Orbitron, Courier, monospace;
+    font-weight: bolder;
+    padding: 1rem;
+    margin: 0 0 1rem 0;
+    background-color: whitesmoke;
+    border: black 1px solid;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.menu-btn:hover {
+    background-color: black;
+    color: whitesmoke;
 }
 
 /* Rules modal styles */
@@ -158,4 +174,3 @@ body {
     padding: 2rem 1rem;
     text-align: center;
 }
-
