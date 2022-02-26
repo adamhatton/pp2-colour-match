@@ -73,7 +73,9 @@ function showSequence() {
         setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
          }, 500 * i);
+         setTimeout(function () {
+            document.getElementById(`${colour}-btn`).style.opacity = 0.5;
+         }, ((500 * i) + 350));
          i++;
-
     }
 }
