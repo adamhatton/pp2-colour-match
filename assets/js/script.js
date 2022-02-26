@@ -1,49 +1,54 @@
 let gameSequence = [];
+let gameButtons = document.getElementsByClassName('game-tile');
 let buttonsActive = true;
 let menu = document.getElementById('menu');
 const onTimeouts = {}
 const offTimeouts = {}
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     //Show game area and hide menu
     let playBtn = document.getElementById('play-btn');
-    playBtn.addEventListener('click', function(){
+    playBtn.addEventListener('click', function () {
         document.getElementsByClassName('game-area')[0].style.display = 'flex';
-       menu.style.display = 'none';
+        menu.style.display = 'none';
+
+        for (let button of gameButtons){
+            button.style.opacity = 0.5;
+        }
     })
 
     //Hide game area and show menu
     let menuBtn = document.getElementById('menu-btn');
-    menuBtn.addEventListener('click', function(){
+    menuBtn.addEventListener('click', function () {
         document.getElementsByClassName('game-area')[0].style.display = 'none';
-       menu.style.display = 'flex';
+        menu.style.display = 'flex';
 
-       for (let i in onTimeouts) {
-           clearTimeout(onTimeouts[i]);
+        for (let i in onTimeouts) {
+            clearTimeout(onTimeouts[i]);
         }
 
         for (let i in offTimeouts) {
             clearTimeout(offTimeouts[i]);
         }
     })
-    
+
     //Show rules modal
     let rulesBtn = document.getElementById('rules-btn');
-    rulesBtn.addEventListener('click', function() {
+    rulesBtn.addEventListener('click', function () {
         document.getElementsByClassName('rules-modal')[0].style.display = 'flex';
     })
 
     //Hide rules modal
     let closeBtn = document.getElementsByClassName('close-btn')[0];
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
         document.getElementsByClassName('rules-modal')[0].style.display = 'none';
     })
 
     //Start new game
     let startBtn = document.getElementById('start-btn');
-    startBtn.addEventListener('click', function() {
-        if(buttonsActive){
+    startBtn.addEventListener('click', function () {
+        if (buttonsActive) {
             startGame();
         }
     })
@@ -73,7 +78,7 @@ function startGame() {
  */
 function addRandomColour() {
     let colour;
-    let colourNumber = Math.ceil(Math.random()*4);
+    let colourNumber = Math.ceil(Math.random() * 4);
 
     switch (colourNumber) {
         case 1:
@@ -99,14 +104,14 @@ function addRandomColour() {
 function showSequence() {
     let i = 1;
 
-    for (let colour of gameSequence){
+    for (let colour of gameSequence) {
 
         onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
-         }, 500 * i);
-        offTimeouts["timeout" + i] =  setTimeout(function () {
+        }, 500 * i);
+        offTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 0.5;
-         }, ((500 * i) + 350));
-         i++;
+        }, ((500 * i) + 350));
+        i++;
     }
 }
