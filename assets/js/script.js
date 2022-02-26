@@ -1,13 +1,15 @@
 let gameSequence = [];
+let playerSequence = [];
 let gameButtons = document.getElementsByClassName('game-tile');
 let buttonsActive = true;
 let menu = document.getElementById('menu');
-const onTimeouts = {}
-const offTimeouts = {}
+const onTimeouts = {};
+const offTimeouts = {};
+let buttonsActiveTimeout;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    //Show game area and hide menu
+    //Show game area, hide menu and set up game area elements
     let playBtn = document.getElementById('play-btn');
     playBtn.addEventListener('click', function () {
         document.getElementsByClassName('game-area')[0].style.display = 'flex';
@@ -16,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let button of gameButtons){
             button.style.opacity = 0.5;
         }
+
+        buttonsActive = true;
     })
 
     //Hide game area and show menu
@@ -24,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementsByClassName('game-area')[0].style.display = 'none';
         menu.style.display = 'flex';
 
+        //Clear timeouts that are set on the sequence animation
         for (let i in onTimeouts) {
             clearTimeout(onTimeouts[i]);
         }
@@ -31,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i in offTimeouts) {
             clearTimeout(offTimeouts[i]);
         }
+
+        clearTimeout(buttonsActiveTimeout);
     })
 
     //Show rules modal
@@ -52,6 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
             startGame();
         }
     })
+
+    //Add event listeners to coloured buttons
+    for (button of gameButtons) {
+        addButtonListeners(button);
+    }
+
 })
 
 /**
@@ -59,13 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
  * displaying the array as a sequence to the player
  */
 function startGame() {
-    // buttonsActive = false;
+    buttonsActive = false;
     gameSequence = [];
-    addRandomColour();
-    addRandomColour();
-    addRandomColour();
-    addRandomColour();
-    addRandomColour();
     addRandomColour();
     addRandomColour();
     addRandomColour();
@@ -114,4 +122,35 @@ function showSequence() {
         }, ((500 * i) + 350));
         i++;
     }
+
+    buttonsActiveTimeout = setTimeout(function () {
+        buttonsActive = true;
+    }, ((500 * i) + 350));
+}
+
+function addButtonListeners(button) {
+
+    button.addEventListener('mousedown', function (){
+        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+            button.style.opacity = 1;
+        }
+    })
+
+    button.addEventListener('mouseup', function (){
+        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+            button.style.opacity = 0.5;
+        }
+    })
+
+    button.addEventListener('mouseleave', function (){
+        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+            button.style.opacity = 0.5;
+        }
+    })
+
+    button.addEventListener('click', function (){
+        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+            alert('yay');
+        }
+    })
 }
