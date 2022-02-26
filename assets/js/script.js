@@ -1,5 +1,5 @@
 let gameSequence = [];
-let buttonsActive = false;
+let buttonsActive = true;
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -32,11 +32,18 @@ document.addEventListener('DOMContentLoaded', function() {
     //Start new game
     let startBtn = document.getElementById('start-btn');
     startBtn.addEventListener('click', function() {
-        startGame();
+        if(buttonsActive){
+            startGame();
+        }
     })
 })
 
+/**
+ * Starts the game by disabling buttons, generating a random colour array and then 
+ * displaying the array as a sequence to the player
+ */
 function startGame() {
+    buttonsActive = false;
     gameSequence = [];
     addRandomColour();
     addRandomColour();
@@ -45,6 +52,9 @@ function startGame() {
     showSequence();
 }
 
+/**
+ * Generates a random number, converts it to a colour name string and adds it to the gameSequence array
+ */
 function addRandomColour() {
     let colour;
     let colourNumber = Math.ceil(Math.random()*4);
@@ -66,6 +76,10 @@ function addRandomColour() {
     gameSequence.push(colour);
 }
 
+/**
+ * Shows the sequence by looping through each element in gameSequence array and increasing
+ * then decreasing the opacity on a timer
+ */
 function showSequence() {
     let i = 1;
 

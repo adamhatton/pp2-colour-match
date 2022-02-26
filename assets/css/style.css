@@ -138,12 +138,12 @@ body {
 
 #red-btn {
     background-color: #FF0002;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 #green-btn {
     background-color: #00DE3E;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 #blue-btn {
@@ -153,7 +153,7 @@ body {
 
 #yellow-btn {
     background-color: #FFD400;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .level {
