@@ -60,11 +60,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    //Add event listeners to coloured buttons
-    for (button of gameButtons) {
+    //Add mousedown, mouseup and mouseleave event listeners to coloured buttons
+    for (button of gameButtons) {     
         addButtonListeners(button);
     }
 
+    /* Add click event listeners to coloured buttons. Separated out so that 'this' 
+    keyword can be used when calling checkPlayerInput */
+    for (button of gameButtons) {
+        button.addEventListener('click', checkPlayerInput);
+    }
 })
 
 /**
@@ -74,8 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function startGame() {
     buttonsActive = false;
     gameSequence = [];
-    addRandomColour();
-    addRandomColour();
     addRandomColour();
     console.log(gameSequence);
     showSequence();
@@ -147,10 +150,8 @@ function addButtonListeners(button) {
             button.style.opacity = 0.5;
         }
     })
+}
 
-    button.addEventListener('click', function (){
-        if(buttonsActive && playerSequence.length <= gameSequence.length) {
-            alert('yay');
-        }
-    })
+function checkPlayerInput() {
+    console.log(this.id);
 }
