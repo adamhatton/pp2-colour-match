@@ -1,5 +1,8 @@
 let gameSequence = [];
 let buttonsActive = true;
+let menu = document.getElementById('menu');
+const onTimeouts = {}
+const offTimeouts = {}
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -7,14 +10,22 @@ document.addEventListener('DOMContentLoaded', function() {
     let playBtn = document.getElementById('play-btn');
     playBtn.addEventListener('click', function(){
         document.getElementsByClassName('game-area')[0].style.display = 'flex';
-        document.getElementById('menu').style.display = 'none';
+       menu.style.display = 'none';
     })
 
     //Hide game area and show menu
     let menuBtn = document.getElementById('menu-btn');
     menuBtn.addEventListener('click', function(){
         document.getElementsByClassName('game-area')[0].style.display = 'none';
-        document.getElementById('menu').style.display = 'flex';
+       menu.style.display = 'flex';
+
+       for (let i in onTimeouts) {
+           clearTimeout(onTimeouts[i]);
+        }
+
+        for (let i in offTimeouts) {
+            clearTimeout(offTimeouts[i]);
+        }
     })
     
     //Show rules modal
@@ -43,8 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
  * displaying the array as a sequence to the player
  */
 function startGame() {
-    buttonsActive = false;
+    // buttonsActive = false;
     gameSequence = [];
+    addRandomColour();
+    addRandomColour();
+    addRandomColour();
+    addRandomColour();
+    addRandomColour();
     addRandomColour();
     addRandomColour();
     addRandomColour();
@@ -84,10 +100,11 @@ function showSequence() {
     let i = 1;
 
     for (let colour of gameSequence){
-        setTimeout(function () {
+
+        onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
          }, 500 * i);
-         setTimeout(function () {
+        offTimeouts["timeout" + i] =  setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 0.5;
          }, ((500 * i) + 350));
          i++;
