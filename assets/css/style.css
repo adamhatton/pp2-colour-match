@@ -134,6 +134,8 @@ body {
     border: black 1px solid;
     border-radius: 0.5rem;
     font-size: 1.6rem;
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
 
 #red-btn {
@@ -206,14 +208,20 @@ body {
     text-align: center;
 }
 
+
+/* Animations */
 @keyframes slide {
     0% {visibility: hidden; height: 0; opacity: 0}
     50% {visibility: visible; height: 25px; opacity: 0}
     100% {visibility: visible; height: 25px; opacity: 1}
 }
 
-/* Media queries */
+@keyframes fade {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
 
+/* Media queries */
 @media (hover: hover) {
     .btn:hover {
         background-color: black;
