@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
  * displaying the array as a sequence to the player
  */
 function startGame() {
-    buttonsActive = false;
     level = 1;
     updateLevelText();
     gameSequence = [];
@@ -116,6 +115,8 @@ function addRandomColour() {
  * then decreasing the opacity on a timer
  */
 function showSequence() {
+    buttonsActive = false;
+
     let i = 1;
 
     for (let colour of gameSequence) {
@@ -174,9 +175,7 @@ function checkPlayerInput() {
     if(buttonsActive) {
 
         if(this.getAttribute('data-colour') === gameSequence[gameSequenceStep]) {
-            
-            alert("it's working" + this.getAttribute('data-colour'));
-            
+                       
             if (gameSequenceStep === gameSequence.length - 1) {
                 nextLevel();
                 return;
@@ -192,6 +191,7 @@ function checkPlayerInput() {
 
 function nextLevel() {
     level++;
+    updateLevelText();
     gameSequenceStep = 0;
     addRandomColour();
     showSequence();
