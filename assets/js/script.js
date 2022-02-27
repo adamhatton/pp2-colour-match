@@ -60,16 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    //Add mousedown, mouseup and mouseleave event listeners to coloured buttons
+    //Add mousedown, mouseup, mouseleave and click event listeners to coloured buttons
     for (button of gameButtons) {     
         addButtonListeners(button);
     }
 
-    /* Add click event listeners to coloured buttons. Separated out so that 'this' 
-    keyword can be used when calling checkPlayerInput */
-    for (button of gameButtons) {
-        button.addEventListener('click', checkPlayerInput);
-    }
 })
 
 /**
@@ -116,7 +111,6 @@ function showSequence() {
     let i = 1;
 
     for (let colour of gameSequence) {
-
         onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
         }, 500 * i);
@@ -150,8 +144,24 @@ function addButtonListeners(button) {
             button.style.opacity = 0.5;
         }
     })
+
+    button.addEventListener('touchstart', function (){
+        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+            button.style.opacity = 1;
+        }
+    })
+
+    button.addEventListener('touchend', function (){
+        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+            button.style.opacity = 0.5;
+        }
+    })
+
+    button.addEventListener('click', checkPlayerInput);
+
 }
 
 function checkPlayerInput() {
     console.log(this.id);
+    console.log('checkPlayerInput called');
 }
