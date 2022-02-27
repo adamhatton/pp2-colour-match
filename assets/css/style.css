@@ -13,6 +13,7 @@ html {
 }
 
 body {
+    background: whitesmoke url(../images/colours-background.png) center center / cover;
     font-size: 2rem;
     font-family: Courier, monospace;
     font-weight: 500;
