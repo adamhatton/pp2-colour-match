@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', function () {
         addButtonListeners(button);
     }
 
+    //Add eventlisteners to logo
+    addLogoListeners();
+
 })
 
 /**
@@ -225,4 +228,19 @@ function gameOver() {
             gameOverModal.style.display = 'none';
         })
     
+}
+
+function addLogoListeners() {
+    let logo = document.getElementById('game-title');
+    logo.addEventListener('click', logoColourSwitch);
+    logo.addEventListener('touchend', logoColourSwitch);
+}
+
+function logoColourSwitch() {
+    let colours = ['#FF0002', '#00DE3E', '#0000FF', '#FFD400'];
+    let logoLetters = document.getElementsByClassName('game-title-letter');
+
+    for (let letter of logoLetters) {
+        letter.style.color = colours[Math.floor(Math.random() * 4)];
+    }
 }
