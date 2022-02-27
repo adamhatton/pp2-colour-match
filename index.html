@@ -50,18 +50,29 @@
             <div id="green-btn" data-colour="green" class="tile game-tile"></div>
             <div id="blue-btn" data-colour="blue" class="tile game-tile"></div>
             <div id="yellow-btn" data-colour="yellow" class="tile game-tile"></div>
-            <div class="level-container">Level : <span id="level"></span></div>
+            <div class="level-container">Level : <span class="level"></span></div>
         </div>
     </div>
 
     <!-- rules modal -->
-    <div class="rules-modal">
-        <div class="rules-content">
+    <div class="rules modal">
+        <div class="modal-content">
             <span class="close-btn">&times;</span>
             <div id="rules-title" class="title">Rules</div>
             <p>Watch the pattern and repeat it back, simple as that!</p>
         </div>
     </div>
+
+    <!-- game over modal -->
+    <div class="game-over modal">
+        <div class="game-over-content modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="game-over-title" class="title">Game Over!</div>
+            <p id="game-over-message"></p>
+            <p>Your score: <span class="level"></span></p>            
+        </div>
+    </div>
+    
 
     <script src="assets/js/script.js"></script>
 </body>

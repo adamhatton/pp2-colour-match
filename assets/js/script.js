@@ -1,8 +1,8 @@
-let levelText = document.getElementById('level');
+let levelText = document.getElementsByClassName('level')[0];
+let scoreText = document.getElementsByClassName('level')[1];
 let level = 0;
 let gameSequence = [];
 let gameSequenceStep = 0;
-let playerSequence = [];
 let gameButtons = document.getElementsByClassName('game-tile');
 let buttonsActive = true;
 let menu = document.getElementById('menu');
@@ -43,18 +43,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         clearTimeout(buttonsActiveTimeout);
+        level = 0;
     })
 
     //Show rules modal
     let rulesBtn = document.getElementById('rules-btn');
     rulesBtn.addEventListener('click', function () {
-        document.getElementsByClassName('rules-modal')[0].style.display = 'flex';
+        document.getElementsByClassName('modal')[0].style.display = 'flex';
     })
 
     //Hide rules modal
     let closeBtn = document.getElementsByClassName('close-btn')[0];
     closeBtn.addEventListener('click', function () {
-        document.getElementsByClassName('rules-modal')[0].style.display = 'none';
+        document.getElementsByClassName('modal')[0].style.display = 'none';
     })
 
     //Start new game
@@ -137,31 +138,31 @@ function showSequence() {
 function addButtonListeners(button) {
 
     button.addEventListener('mousedown', function (){
-        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+        if(buttonsActive) {
             button.style.opacity = 1;
         }
     })
 
     button.addEventListener('mouseup', function (){
-        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+        if(buttonsActive) {
             button.style.opacity = 0.5;
         }
     })
 
     button.addEventListener('mouseleave', function (){
-        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+        if(buttonsActive) {
             button.style.opacity = 0.5;
         }
     })
 
     button.addEventListener('touchstart', function (){
-        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+        if(buttonsActive && gameSequence.length > 0) {
             button.style.opacity = 1;
         }
     })
 
     button.addEventListener('touchend', function (){
-        if(buttonsActive && playerSequence.length <= gameSequence.length) {
+        if(buttonsActive && gameSequence.length > 0) {
             button.style.opacity = 0.5;
         }
     })
@@ -172,7 +173,7 @@ function addButtonListeners(button) {
 
 function checkPlayerInput() {
 
-    if(buttonsActive) {
+    if(buttonsActive && gameSequence.length > 0) {
 
         if(this.getAttribute('data-colour') === gameSequence[gameSequenceStep]) {
                        
@@ -184,7 +185,7 @@ function checkPlayerInput() {
         gameSequenceStep++; 
 
         } else {
-            alert("wrong");
+            gameOver();
         }
     }
 }
@@ -199,4 +200,29 @@ function nextLevel() {
 
 function updateLevelText(){
     levelText.innerHTML = level;
+    scoreText.innerHTML = level - 1;
+}
+
+function gameOver() {
+        let gameOverMessages = [
+            'Combo breaker!',
+            'Do it again...but better!',
+            'Try again!',
+            'The secret is to press the right colour!',
+            'Have you tried pressing the Color Match logo?'
+        ]
+
+        //Show game over modal
+        let gameOverModal = document.getElementsByClassName('modal')[1];
+        gameOverModal.style.display = 'flex';
+
+        let gameOverMessage = document.getElementById('game-over-message');
+        gameOverMessage.innerHTML = gameOverMessages[Math.floor(Math.random() * 5)]
+    
+        //Hide rules modal
+        let closeBtn = document.getElementsByClassName('close-btn')[1];
+        closeBtn.addEventListener('click', function () {
+            gameOverModal.style.display = 'none';
+        })
+    
 }

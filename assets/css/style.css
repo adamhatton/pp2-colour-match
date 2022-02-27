@@ -166,7 +166,7 @@ body {
 }
 
 /* Rules modal styles */
-.rules-modal {
+.modal {
     display: none;
     justify-content: center;
     align-items: center;
@@ -179,13 +179,15 @@ body {
     background-color: rgba(0,0,0,0.4);
 }
 
-.rules-content {
-    background-color: blanchedalmond;
+.modal-content {
+    background-color: #000;
     margin: 20% auto;
     display: flex;
     flex-direction: column;
     max-width: 500px;
+    min-width: 300px;
     transform: translateY(-20%);
+    color: #fff;
     }
 
 .close-btn {
@@ -199,7 +201,7 @@ body {
     cursor: pointer;
 }
 
-.rules-content > p {
+.modal-content > p {
     padding: 2rem 1rem;
     text-align: center;
 }
