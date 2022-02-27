@@ -1,6 +1,7 @@
 let levelText = document.getElementById('level');
 let level = 0;
 let gameSequence = [];
+let gameSequenceStep = 0;
 let playerSequence = [];
 let gameButtons = document.getElementsByClassName('game-tile');
 let buttonsActive = true;
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         buttonsActive = true;
         updateLevelText();
+
     })
 
     //Hide game area and show menu
@@ -79,6 +81,7 @@ function startGame() {
     level = 1;
     updateLevelText();
     gameSequence = [];
+    gameSequenceStep = 0;
     addRandomColour();
     console.log(gameSequence);
     showSequence();
@@ -166,14 +169,33 @@ function addButtonListeners(button) {
 
 }
 
-// function checkPlayerInput() {
-//     console.log('checkPlayerInput called');
-//     if(buttonsActive){
-//         if() {
+function checkPlayerInput() {
 
-//         }
-//     }
-// }
+    if(buttonsActive) {
+
+        if(this.getAttribute('data-colour') === gameSequence[gameSequenceStep]) {
+            
+            alert("it's working" + this.getAttribute('data-colour'));
+            
+            if (gameSequenceStep === gameSequence.length - 1) {
+                nextLevel();
+                return;
+            }
+        
+        gameSequenceStep++; 
+
+        } else {
+            alert("wrong");
+        }
+    }
+}
+
+function nextLevel() {
+    level++;
+    gameSequenceStep = 0;
+    addRandomColour();
+    showSequence();
+}
 
 function updateLevelText(){
     levelText.innerHTML = level;
