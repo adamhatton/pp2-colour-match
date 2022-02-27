@@ -131,11 +131,6 @@ body {
     font-size: 1.6rem;
 }
 
-.btn:hover {
-    background-color: black;
-    color: whitesmoke;
-}
-
 #red-btn {
     background-color: #FF0002;
     opacity: 0.5;
@@ -156,7 +151,7 @@ body {
     opacity: 0.5;
 }
 
-.level {
+.level-container {
     font-family: Orbitron, Courier, monospace;
     margin: 1rem auto;
     text-transform: uppercase;
@@ -207,4 +202,13 @@ body {
     0% {visibility: hidden; height: 0; opacity: 0}
     50% {visibility: visible; height: 25px; opacity: 0}
     100% {visibility: visible; height: 25px; opacity: 1}
+}
+
+/* Media queries */
+
+@media (hover: hover) {
+    .btn:hover {
+        background-color: black;
+        color: whitesmoke;
+    }
 }
