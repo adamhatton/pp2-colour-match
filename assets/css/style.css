@@ -194,7 +194,8 @@ body {
     min-width: 300px;
     transform: translateY(-20%);
     color: #fff;
-    }
+    border: 1px solid #fff;
+}
 
 .close-btn {
     align-self: end;
@@ -232,4 +233,15 @@ body {
         color: whitesmoke;
         border-color: whitesmoke;
     }
+}
+
+@media screen and (max-height: 620px) {
+    .tile {
+        width: 25%;
+        padding-top: 25%;
+    }
+
+    .modal-content {
+        transform: translateY(0);
+        }
 }

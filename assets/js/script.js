@@ -1,5 +1,6 @@
 let levelText = document.getElementsByClassName('level')[0];
 let scoreText = document.getElementsByClassName('level')[1];
+let targettedButton = null;
 let level = 0;
 let gameSequence = [];
 let gameSequenceStep = 0;
@@ -141,6 +142,9 @@ function showSequence() {
 function addButtonListeners(button) {
 
     button.addEventListener('mousedown', function (){
+        targettedButton = this;
+        console.log(targettedButton);
+
         if(buttonsActive) {
             button.style.opacity = 1;
         }
@@ -159,13 +163,13 @@ function addButtonListeners(button) {
     })
 
     button.addEventListener('touchstart', function (){
-        if(buttonsActive && gameSequence.length > 0) {
+        if(buttonsActive) {
             button.style.opacity = 1;
         }
     })
 
     button.addEventListener('touchend', function (){
-        if(buttonsActive && gameSequence.length > 0) {
+        if(buttonsActive) {
             button.style.opacity = 0.5;
         }
     })
