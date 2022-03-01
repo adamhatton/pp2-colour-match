@@ -227,7 +227,7 @@ body {
 }
 
 /* Media queries */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .btn:hover {
         background-color: black;
         color: whitesmoke;
