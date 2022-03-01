@@ -43,6 +43,10 @@ body {
     box-shadow: 2px 2px 10px #fff;
 }
 
+#game-title {
+    user-select: none;
+}
+
 .title {
     font-family: Luckiest Guy, Orbitron, monospace;
     font-size: 4rem;
@@ -226,5 +230,6 @@ body {
     .btn:hover {
         background-color: black;
         color: whitesmoke;
+        border-color: whitesmoke;
     }
 }
