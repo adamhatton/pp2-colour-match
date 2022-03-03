@@ -222,7 +222,6 @@ function addNavButtonListeners(button){
         }
     })
 
-
 }
 
 function checkPlayerInput() {

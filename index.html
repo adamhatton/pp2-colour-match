@@ -46,10 +46,30 @@
                 <button id="start-btn" class="btn">Start</button>
                 <button id="menu-btn" class="btn">Menu</button>
             </div>            
-            <div id="red-btn" data-colour="red" class="tile game-tile"></div>
-            <div id="green-btn" data-colour="green" class="tile game-tile"></div>
-            <div id="blue-btn" data-colour="blue" class="tile game-tile"></div>
-            <div id="yellow-btn" data-colour="yellow" class="tile game-tile"></div>
+            <div id="red-btn" data-colour="red" class="tile game-tile">
+                <audio id="red-sound">
+                    <source src="assets/sounds/red-sound.mp3.mp3" type="audio/mpeg">
+                    <source src="assets/sounds/red-sound.ogg.ogg" type="audio/ogg">
+                </audio>
+            </div>
+            <div id="green-btn" data-colour="green" class="tile game-tile">
+                <audio id="green-sound">
+                    <source src="assets/sounds/green-sound.mp3.mp3" type="audio/mpeg">
+                    <source src="assets/sounds/green-sound.ogg.ogg" type="audio/ogg">
+                </audio>
+            </div>
+            <div id="blue-btn" data-colour="blue" class="tile game-tile">
+                <audio id="blue-sound">
+                    <source src="assets/sounds/blue-sound.mp3.mp3" type="audio/mpeg">
+                    <source src="assets/sounds/blue-sound.ogg.ogg" type="audio/ogg">
+                </audio>
+            </div>
+            <div id="yellow-btn" data-colour="yellow" class="tile game-tile">
+                <audio id="blue-sound">
+                    <source src="assets/sounds/yellow-sound.mp3.mp3" type="audio/mpeg">
+                    <source src="assets/sounds/yellow-sound.ogg.ogg" type="audio/ogg">
+                </audio>
+            </div>
             <div class="level-container">Level : <span class="level"></span></div>
         </div>
     </div>
