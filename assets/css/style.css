@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background: whitesmoke url(../images/colours-background.png) center center / cover;
+    /* background: whitesmoke url(../images/colours-background.png) center center / cover; */
     font-size: 2rem;
     font-family: Courier, monospace;
     font-weight: 500;
@@ -122,6 +122,7 @@ body {
     padding: 1rem;
     background-color:rgba(0,0,0,0.85);
     border-radius: 1rem;
+    box-shadow: 2px 2px 10px #fff;
 }
 
 .btn-holder {

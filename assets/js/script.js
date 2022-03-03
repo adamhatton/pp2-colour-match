@@ -1,10 +1,10 @@
 let levelText = document.getElementsByClassName('level')[0];
 let scoreText = document.getElementsByClassName('level')[1];
-let targettedButton = null;
 let level = 0;
 let gameSequence = [];
 let gameSequenceStep = 0;
 let gameButtons = document.getElementsByClassName('game-tile');
+let navButtons = document.getElementsByClassName('btn');
 let buttonsActive = true;
 let menu = document.getElementById('menu');
 const onTimeouts = {};
@@ -59,17 +59,23 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementsByClassName('modal')[0].style.display = 'none';
     })
 
-    //Start new game
+    //Add start game event listener to start button
     let startBtn = document.getElementById('start-btn');
+
     startBtn.addEventListener('click', function () {
         if (buttonsActive) {
             startGame();
         }
     })
 
-    //Add mousedown, mouseup, mouseleave and click event listeners to coloured buttons
+    //Add event listeners to animate coloured buttons
     for (button of gameButtons) {     
-        addButtonListeners(button);
+        addGameButtonListeners(button);
+    }
+
+    //Add event listeners to animate navigation buttons
+    for (button of navButtons) {     
+        addNavButtonListeners(button);
     }
 
     //Add eventlisteners to logo
@@ -139,7 +145,7 @@ function showSequence() {
     }, ((500 * i) + 10));
 }
 
-function addButtonListeners(button) {
+function addGameButtonListeners(button) {
 
     button.addEventListener('mousedown', function (){
         targettedButton = this;
@@ -175,6 +181,47 @@ function addButtonListeners(button) {
     })
 
     button.addEventListener('click', checkPlayerInput);
+
+}
+
+function addNavButtonListeners(button){
+
+    button.addEventListener('mousedown', function () {
+        if (buttonsActive) {
+            button.style.transform = "scale(0.9,0.9)";
+        }
+    })
+
+    button.addEventListener('mouseup', function () {
+        if (buttonsActive) {
+            button.style.transform = "scale(1,1)";
+        }
+    })
+
+    button.addEventListener('mouseleave', function () {
+        if (buttonsActive) {
+            button.style.transform = "scale(1,1)";
+        }
+    })
+
+    button.addEventListener('touchstart', function (){
+        if(buttonsActive) {
+            button.style.transform = "scale(0.9,0.9)";
+            button.style.color = "#f5f5f5";
+            button.style.borderColor = "#f5f5f5";
+            button.style.backgroundColor = "#000";
+        }
+    })
+
+    button.addEventListener('touchend', function (){
+        if(buttonsActive) {
+            button.style.transform = "scale(1,1)";
+            button.style.color = "#000";
+            button.style.borderColor = "#000";
+            button.style.backgroundColor = "#f5f5f5";
+        }
+    })
+
 
 }
 
