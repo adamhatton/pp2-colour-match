@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         clearTimeout(buttonsActiveTimeout);
+        gameSequence = [];
         level = 0;
     })
 
