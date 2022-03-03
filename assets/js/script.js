@@ -133,6 +133,7 @@ function showSequence() {
     for (let colour of gameSequence) {
         onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
+            document.getElementById(`${colour}-sound`).play();
         }, 500 * i);
         offTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 0.5;
@@ -153,6 +154,7 @@ function addGameButtonListeners(button) {
 
         if(buttonsActive) {
             button.style.opacity = 1;
+            document.getElementById(`${button.getAttribute('data-colour')}-sound`).play();
         }
     })
 
