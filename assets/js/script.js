@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         buttonsActive = true;
         updateLevelText();
-    })
+    });
 
     //Add listener to menu button to hide game area, show menu and reset level data
     let menuBtn = document.getElementById('menu-btn');
@@ -45,19 +45,19 @@ document.addEventListener('DOMContentLoaded', function () {
         clearTimeout(buttonsActiveTimeout);
         gameSequence = [];
         level = 0;
-    })
+    });
 
     //Add listener to rules tile to show rules modal
     let rulesBtn = document.getElementById('rules-btn');
     rulesBtn.addEventListener('click', function () {
         document.getElementsByClassName('modal')[0].style.display = 'flex';
-    })
+    });
 
     //Add listener to rules modal close button to hide rules modal
     let closeBtn = document.getElementsByClassName('close-btn')[0];
     closeBtn.addEventListener('click', function () {
         document.getElementsByClassName('modal')[0].style.display = 'none';
-    })
+    });
 
     //Add listener to start button to start game
     let startBtn = document.getElementById('start-btn');
@@ -66,21 +66,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (buttonsActive) {
             startGame();
         }
-    })
+    });
 
     //Add event listeners to animate coloured buttons
-    for (button of gameButtons) {     
+    for (let button of gameButtons) {     
         addGameButtonListeners(button);
     }
 
     //Add event listeners to animate navigation buttons
-    for (button of navButtons) {     
+    for (let button of navButtons) {     
         addNavButtonListeners(button);
     }
 
     //Add eventlisteners to logo
     addLogoListeners();
-})
+});
 
 /**
  * Starts the game by disabling buttons, generating a random colour array and then 
@@ -156,19 +156,19 @@ function addGameButtonListeners(button) {
             button.style.opacity = 1;
             document.getElementById(`${button.getAttribute('data-colour')}-sound`).play();
         }
-    })
+    });
 
     button.addEventListener('mouseup', function (){
         if(buttonsActive) {
             button.style.opacity = 0.5;
         }
-    })
+    });
 
     button.addEventListener('mouseleave', function (){
         if(buttonsActive) {
             button.style.opacity = 0.5;
         }
-    })
+    });
 
     button.addEventListener('touchstart', function (e){
         if(buttonsActive) {
@@ -176,13 +176,13 @@ function addGameButtonListeners(button) {
             button.style.opacity = 1;
             document.getElementById(`${button.getAttribute('data-colour')}-sound`).play();
         }
-    })
+    });
 
     button.addEventListener('touchend', function (){
         if(buttonsActive) {
             button.style.opacity = 0.5;
         }
-    })
+    });
 
     button.addEventListener('click', checkPlayerInput);
 }
@@ -196,19 +196,19 @@ function addNavButtonListeners(button){
         if (buttonsActive) {
             button.style.transform = "scale(0.9,0.9)";
         }
-    })
+    });
 
     button.addEventListener('mouseup', function () {
         if (buttonsActive) {
             button.style.transform = "scale(1,1)";
         }
-    })
+    });
 
     button.addEventListener('mouseleave', function () {
         if (buttonsActive) {
             button.style.transform = "scale(1,1)";
         }
-    })
+    });
 
     button.addEventListener('touchstart', function (){
         if(buttonsActive) {
@@ -217,7 +217,7 @@ function addNavButtonListeners(button){
             button.style.borderColor = "#f5f5f5";
             button.style.backgroundColor = "#000";
         }
-    })
+    });
 
     button.addEventListener('touchend', function (){
         if(buttonsActive) {
@@ -226,7 +226,7 @@ function addNavButtonListeners(button){
             button.style.borderColor = "#000";
             button.style.backgroundColor = "#f5f5f5";
         }
-    })
+    });
 }
 
 /**
@@ -283,20 +283,20 @@ function gameOver() {
             'Try again!',
             'The secret is to press the right colour!',
             'Have you tried pressing the Color Match logo?'
-        ]
+        ];
 
         //Show game over modal
         let gameOverModal = document.getElementsByClassName('modal')[1];
         gameOverModal.style.display = 'flex';
 
         let gameOverMessage = document.getElementById('game-over-message');
-        gameOverMessage.innerHTML = gameOverMessages[Math.floor(Math.random() * 5)]
+        gameOverMessage.innerHTML = gameOverMessages[Math.floor(Math.random() * 5)];
     
         //Add listener to game over modal close button that closes the modal
         let closeBtn = document.getElementsByClassName('close-btn')[1];
         closeBtn.addEventListener('click', function () {
             gameOverModal.style.display = 'none';
-        })
+        });
 
         gameSequence = [];  
 }
