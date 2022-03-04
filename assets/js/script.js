@@ -13,7 +13,7 @@ let buttonsActiveTimeout;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    //Show game area, hide menu and set up game area elements
+    //Add listener to play tile to show game area, hide menu and set up game area elements
     let playBtn = document.getElementById('play-btn');
     playBtn.addEventListener('click', function () {
         document.getElementsByClassName('game-area')[0].style.display = 'flex';
@@ -25,10 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         buttonsActive = true;
         updateLevelText();
-
     })
 
-    //Hide game area and show menu
+    //Add listener to menu button to hide game area, show menu and reset level data
     let menuBtn = document.getElementById('menu-btn');
     menuBtn.addEventListener('click', function () {
         document.getElementsByClassName('game-area')[0].style.display = 'none';
@@ -48,19 +47,19 @@ document.addEventListener('DOMContentLoaded', function () {
         level = 0;
     })
 
-    //Show rules modal
+    //Add listener to rules tile to show rules modal
     let rulesBtn = document.getElementById('rules-btn');
     rulesBtn.addEventListener('click', function () {
         document.getElementsByClassName('modal')[0].style.display = 'flex';
     })
 
-    //Hide rules modal
+    //Add listener to rules modal close button to hide rules modal
     let closeBtn = document.getElementsByClassName('close-btn')[0];
     closeBtn.addEventListener('click', function () {
         document.getElementsByClassName('modal')[0].style.display = 'none';
     })
 
-    //Add start game event listener to start button
+    //Add listener to start button to start game
     let startBtn = document.getElementById('start-btn');
 
     startBtn.addEventListener('click', function () {
@@ -81,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Add eventlisteners to logo
     addLogoListeners();
-
 })
 
 /**
@@ -142,17 +140,18 @@ function showSequence() {
         i++;
     }
 
+    //Set buttons to active after animation has finished
     buttonsActiveTimeout = setTimeout(function () {
         buttonsActive = true;
     }, ((500 * i) + 10));
 }
 
+/**
+ * Adds event listeners to all the game buttons for animating clicks and playing sound 
+ */
 function addGameButtonListeners(button) {
 
     button.addEventListener('mousedown', function (){
-        targettedButton = this;
-        console.log(targettedButton);
-
         if(buttonsActive) {
             button.style.opacity = 1;
             document.getElementById(`${button.getAttribute('data-colour')}-sound`).play();
@@ -171,9 +170,11 @@ function addGameButtonListeners(button) {
         }
     })
 
-    button.addEventListener('touchstart', function (){
+    button.addEventListener('touchstart', function (e){
         if(buttonsActive) {
+            e.preventDefault();
             button.style.opacity = 1;
+            document.getElementById(`${button.getAttribute('data-colour')}-sound`).play();
         }
     })
 
@@ -184,9 +185,11 @@ function addGameButtonListeners(button) {
     })
 
     button.addEventListener('click', checkPlayerInput);
-
 }
 
+/**
+ * Add event listeners to navigation buttons to animates them on clicks 
+ */
 function addNavButtonListeners(button){
 
     button.addEventListener('mousedown', function () {
@@ -224,9 +227,12 @@ function addNavButtonListeners(button){
             button.style.backgroundColor = "#f5f5f5";
         }
     })
-
 }
 
+/**
+ * Checks that player input matches the colour array as long as
+ * buttons are active and there is at least 1 entry in the array.
+ */
 function checkPlayerInput() {
 
     if(buttonsActive && gameSequence.length > 0) {
@@ -246,6 +252,9 @@ function checkPlayerInput() {
     }
 }
 
+/**
+ * Sets up next level by updating variables and adding another colour to the array
+ */
 function nextLevel() {
     level++;
     updateLevelText();
@@ -254,12 +263,20 @@ function nextLevel() {
     showSequence();
 }
 
+/**
+ * Sets the players score on both the game screen and game over screen
+ */
 function updateLevelText(){
     levelText.innerHTML = level;
     scoreText.innerHTML = level - 1;
 }
 
+/**
+ * Shows the game over modal and populates the text randomly from an array
+ * of game over messages
+ */
 function gameOver() {
+
         let gameOverMessages = [
             'Combo breaker!',
             'Do it again...but better!',
@@ -275,20 +292,27 @@ function gameOver() {
         let gameOverMessage = document.getElementById('game-over-message');
         gameOverMessage.innerHTML = gameOverMessages[Math.floor(Math.random() * 5)]
     
-        //Hide rules modal
+        //Add listener to game over modal close button that closes the modal
         let closeBtn = document.getElementsByClassName('close-btn')[1];
         closeBtn.addEventListener('click', function () {
             gameOverModal.style.display = 'none';
         })
-    
+
+        gameSequence = [];  
 }
 
+/**
+ * Adds listeners to the logo
+ */
 function addLogoListeners() {
     let logo = document.getElementById('game-title');
     logo.addEventListener('click', logoColourSwitch);
     logo.addEventListener('touchend', logoColourSwitch);
 }
 
+/**
+ * Changes the colour of the letters in the logo when clicked
+ */
 function logoColourSwitch() {
     let colours = ['#FF0002', '#00DE3E', '#0000FF', '#FFD400'];
     let logoLetters = document.getElementsByClassName('game-title-letter');
