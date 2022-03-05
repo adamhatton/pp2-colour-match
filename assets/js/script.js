@@ -1,15 +1,11 @@
-let levelText = document.getElementsByClassName('level')[0];
-let scoreText = document.getElementsByClassName('level')[1];
-let level = 0;
-let gameSequence = [];
-let gameSequenceStep = 0;
-let gameButtons = document.getElementsByClassName('game-tile');
-let navButtons = document.getElementsByClassName('btn');
-let buttonsActive = true;
-let menu = document.getElementById('menu');
+const levelText = document.getElementsByClassName('level')[0];
+const highScoreText = document.getElementsByClassName('level')[1];
+const scoreText = document.getElementsByClassName('level')[2];
+const gameButtons = document.getElementsByClassName('game-tile');
+const navButtons = document.getElementsByClassName('btn');
+const menu = document.getElementById('menu');
 const onTimeouts = {};
 const offTimeouts = {};
-let buttonsActiveTimeout;
 const redSound1 = new Audio('assets/sounds/red-sound.mp3');
 const redSound2 = new Audio('assets/sounds/red-sound.mp3');
 const greenSound1 = new Audio('assets/sounds/green-sound.mp3');
@@ -29,14 +25,20 @@ const sounds = [
     yellowSound2
 ];
 let sound1, sound2;
+let gameSequence = [];
+let level = 0;
+let highScore = 0;
+let gameSequenceStep = 0;
+let buttonsActive = true;
+let buttonsActiveTimeout;
 
 document.addEventListener('DOMContentLoaded', function () {
 
     //Add listener to play-tile to show game area, hide menu and set up game area elements
     let playBtn = document.getElementById('play-btn');
     playBtn.addEventListener('click', function () {
-        document.getElementsByClassName('game-area')[0].style.display = 'flex';
-        menu.style.display = 'none';
+        showArea(document.getElementsByClassName('game-area')[0]);
+        hideArea(menu);
 
         for (let button of gameButtons){
             button.style.opacity = 0.5;
@@ -49,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
     //Add listener to menu button to hide game area, show menu and reset level data
     let menuBtn = document.getElementById('menu-btn');
     menuBtn.addEventListener('click', function () {
-        document.getElementsByClassName('game-area')[0].style.display = 'none';
-        menu.style.display = 'flex';
+        hideArea(document.getElementsByClassName('game-area')[0]);
+        showArea(menu);
 
         //Clear timeouts that are set on the sequence animation
         for (let i in onTimeouts) {
@@ -69,18 +71,29 @@ document.addEventListener('DOMContentLoaded', function () {
     //Add listener to rules tile to show rules modal
     let rulesBtn = document.getElementById('rules-btn');
     rulesBtn.addEventListener('click', function () {
-        document.getElementsByClassName('modal')[0].style.display = 'flex';
+        showArea(document.getElementById('rules'));
     });
 
     //Add listener to rules modal close button to hide rules modal
-    let closeBtn = document.getElementsByClassName('close-btn')[0];
-    closeBtn.addEventListener('click', function () {
-        document.getElementsByClassName('modal')[0].style.display = 'none';
+    let rulesCloseBtn = document.getElementsByClassName('close-btn')[0];
+    rulesCloseBtn.addEventListener('click', function () {
+        hideArea(document.getElementById('rules'));
+    });
+
+    //Add listener to high-score tile to show high score modal
+    let highScoreBtn = document.getElementById('high-score-btn');
+    highScoreBtn.addEventListener('click', function () {
+        showArea(document.getElementById('high-score'));
+    });
+
+    //Add listener to high-score modal close button to hide high score modal
+    let highScoreCloseBtn = document.getElementsByClassName('close-btn')[1];
+    highScoreCloseBtn.addEventListener('click', function () {
+        hideArea(document.getElementById('high-score'));
     });
 
     //Add listener to start-button to start game
     let startBtn = document.getElementById('start-btn');
-
     startBtn.addEventListener('click', function () {
         if (buttonsActive) {
             startGame();
@@ -151,9 +164,7 @@ function showSequence() {
     for (let colour of gameSequence) {
         onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
-            //document.getElementById(`${colour}-sound`).play();
             playSound(colour);
-
         }, 500 * i);
         offTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 0.5;
@@ -301,17 +312,19 @@ function gameOver() {
         ];
 
         //Show game over modal
-        let gameOverModal = document.getElementsByClassName('modal')[1];
-        gameOverModal.style.display = 'flex';
+        let gameOverModal = document.getElementById('game-over');
+        showArea(gameOverModal);
 
         let gameOverMessage = document.getElementById('game-over-message');
         gameOverMessage.innerHTML = gameOverMessages[Math.floor(Math.random() * 5)];
     
         //Add listener to game over modal close-button that closes the modal
-        let closeBtn = document.getElementsByClassName('close-btn')[1];
+        let closeBtn = document.getElementsByClassName('close-btn')[2];
         closeBtn.addEventListener('click', function () {
-            gameOverModal.style.display = 'none';
+            hideArea(gameOverModal);
         });
+
+        setHighScore();
 
         gameSequence = [];  
 }
@@ -337,6 +350,10 @@ function logoColourSwitch() {
     }
 }
 
+/**
+ * Plays sound depending on colour of button. Each colour has 2 identical sounds
+ * assigned which are stopped and started accordingly to allow a sound on every click.
+ */
 function playSound(button) {
     if (button === 'red') {
         sound1 = sounds[0];
@@ -363,4 +380,20 @@ function playSound(button) {
         sound2.currentTime = 0;    
         sound1.play();            
     }
+}
+
+function showArea(area) {
+    area.style.display = 'flex';
+}
+
+function hideArea(area) {
+    area.style.display = 'none';
+}
+
+function setHighScore() {
+    if((level - 1) > highScore) {
+        highScore = level - 1;
+    }
+
+    highScoreText.innerHTML = highScore;
 }
