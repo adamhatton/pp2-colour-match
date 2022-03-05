@@ -10,10 +10,29 @@ let menu = document.getElementById('menu');
 const onTimeouts = {};
 const offTimeouts = {};
 let buttonsActiveTimeout;
+const redSound1 = new Audio('assets/sounds/red-sound.mp3');
+const redSound2 = new Audio('assets/sounds/red-sound.mp3');
+const greenSound1 = new Audio('assets/sounds/green-sound.mp3');
+const greenSound2 = new Audio('assets/sounds/green-sound.mp3');
+const blueSound1 = new Audio('assets/sounds/blue-sound.mp3');
+const blueSound2 = new Audio('assets/sounds/blue-sound.mp3');
+const yellowSound1 = new Audio('assets/sounds/yellow-sound.mp3');
+const yellowSound2 = new Audio('assets/sounds/yellow-sound.mp3');
+const sounds = [
+    redSound1,
+    redSound2,
+    greenSound1,
+    greenSound2,
+    blueSound1,
+    blueSound2,
+    yellowSound1,
+    yellowSound2
+];
+let sound1, sound2;
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    //Add listener to play tile to show game area, hide menu and set up game area elements
+    //Add listener to play-tile to show game area, hide menu and set up game area elements
     let playBtn = document.getElementById('play-btn');
     playBtn.addEventListener('click', function () {
         document.getElementsByClassName('game-area')[0].style.display = 'flex';
@@ -59,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementsByClassName('modal')[0].style.display = 'none';
     });
 
-    //Add listener to start button to start game
+    //Add listener to start-button to start game
     let startBtn = document.getElementById('start-btn');
 
     startBtn.addEventListener('click', function () {
@@ -68,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    //Add event listeners to animate coloured buttons
+    //Add event listeners to animate colour buttons
     for (let button of gameButtons) {     
         addGameButtonListeners(button);
     }
@@ -132,7 +151,32 @@ function showSequence() {
     for (let colour of gameSequence) {
         onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
-            document.getElementById(`${colour}-sound`).play();
+            //document.getElementById(`${colour}-sound`).play();
+            if (colour === 'red') {
+                sound1 = sounds[0];
+                sound2 = sounds[1];
+            } else if (colour === 'green') {
+                sound1 = sounds[2];
+                sound2 = sounds[3];
+            } else if (colour === 'blue') {
+                sound1 = sounds[4];
+                sound2 = sounds[5];
+            } else if (colour === 'yellow') {
+                sound1 = sounds[6];
+                sound2 = sounds[7];
+            }
+
+            if (sound1.paused && sound2.paused) {
+                sound1.play();
+            } else if (!sound1.paused && sound2.paused) {
+                sound1.pause();  
+                sound1.currentTime = 0;              
+                sound2.play();
+            } else if (sound1.paused && !sound2.paused) {
+                sound2.pause();
+                sound2.currentTime = 0;    
+                sound1.play();            
+            }
         }, 500 * i);
         offTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 0.5;
@@ -154,7 +198,32 @@ function addGameButtonListeners(button) {
     button.addEventListener('mousedown', function (){
         if(buttonsActive) {
             button.style.opacity = 1;
-            document.getElementById(`${button.getAttribute('data-colour')}-sound`).play();
+
+            if (button.getAttribute('data-colour') === 'red') {
+                sound1 = sounds[0];
+                sound2 = sounds[1];
+            } else if (button.getAttribute('data-colour') === 'green') {
+                sound1 = sounds[2];
+                sound2 = sounds[3];
+            } else if (button.getAttribute('data-colour') === 'blue') {
+                sound1 = sounds[4];
+                sound2 = sounds[5];
+            } else if (button.getAttribute('data-colour') === 'yellow') {
+                sound1 = sounds[6];
+                sound2 = sounds[7];
+            }
+
+            if (sound1.paused && sound2.paused) {
+                sound1.play();
+            } else if (!sound1.paused && sound2.paused) {
+                sound1.pause();  
+                sound1.currentTime = 0;              
+                sound2.play();
+            } else if (sound1.paused && !sound2.paused) {
+                sound2.pause();
+                sound2.currentTime = 0;    
+                sound1.play();            
+            }
         }
     });
 
@@ -188,7 +257,7 @@ function addGameButtonListeners(button) {
 }
 
 /**
- * Add event listeners to navigation buttons to animates them on clicks 
+ * Add event listeners to navigation buttons to animate them on clicks 
  */
 function addNavButtonListeners(button){
 
