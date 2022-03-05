@@ -152,31 +152,8 @@ function showSequence() {
         onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
             //document.getElementById(`${colour}-sound`).play();
-            if (colour === 'red') {
-                sound1 = sounds[0];
-                sound2 = sounds[1];
-            } else if (colour === 'green') {
-                sound1 = sounds[2];
-                sound2 = sounds[3];
-            } else if (colour === 'blue') {
-                sound1 = sounds[4];
-                sound2 = sounds[5];
-            } else if (colour === 'yellow') {
-                sound1 = sounds[6];
-                sound2 = sounds[7];
-            }
+            playSound(colour);
 
-            if (sound1.paused && sound2.paused) {
-                sound1.play();
-            } else if (!sound1.paused && sound2.paused) {
-                sound1.pause();  
-                sound1.currentTime = 0;              
-                sound2.play();
-            } else if (sound1.paused && !sound2.paused) {
-                sound2.pause();
-                sound2.currentTime = 0;    
-                sound1.play();            
-            }
         }, 500 * i);
         offTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 0.5;
@@ -187,7 +164,7 @@ function showSequence() {
     //Set buttons to active after animation has finished
     buttonsActiveTimeout = setTimeout(function () {
         buttonsActive = true;
-    }, (500 * i));
+    }, (500 * i) - 100);
 }
 
 /**
@@ -198,32 +175,7 @@ function addGameButtonListeners(button) {
     button.addEventListener('mousedown', function (){
         if(buttonsActive) {
             button.style.opacity = 1;
-
-            if (button.getAttribute('data-colour') === 'red') {
-                sound1 = sounds[0];
-                sound2 = sounds[1];
-            } else if (button.getAttribute('data-colour') === 'green') {
-                sound1 = sounds[2];
-                sound2 = sounds[3];
-            } else if (button.getAttribute('data-colour') === 'blue') {
-                sound1 = sounds[4];
-                sound2 = sounds[5];
-            } else if (button.getAttribute('data-colour') === 'yellow') {
-                sound1 = sounds[6];
-                sound2 = sounds[7];
-            }
-
-            if (sound1.paused && sound2.paused) {
-                sound1.play();
-            } else if (!sound1.paused && sound2.paused) {
-                sound1.pause();  
-                sound1.currentTime = 0;              
-                sound2.play();
-            } else if (sound1.paused && !sound2.paused) {
-                sound2.pause();
-                sound2.currentTime = 0;    
-                sound1.play();            
-            }
+            playSound(button.getAttribute('data-colour'));
         }
     });
 
@@ -237,7 +189,7 @@ function addGameButtonListeners(button) {
         if(buttonsActive) {
             e.preventDefault();
             button.style.opacity = 1;
-            document.getElementById(`${button.getAttribute('data-colour')}-sound`).play();
+            playSound(button.getAttribute('data-colour'));
         }
     });
 
@@ -355,7 +307,7 @@ function gameOver() {
         let gameOverMessage = document.getElementById('game-over-message');
         gameOverMessage.innerHTML = gameOverMessages[Math.floor(Math.random() * 5)];
     
-        //Add listener to game over modal close button that closes the modal
+        //Add listener to game over modal close-button that closes the modal
         let closeBtn = document.getElementsByClassName('close-btn')[1];
         closeBtn.addEventListener('click', function () {
             gameOverModal.style.display = 'none';
@@ -382,5 +334,33 @@ function logoColourSwitch() {
 
     for (let letter of logoLetters) {
         letter.style.color = colours[Math.floor(Math.random() * 4)];
+    }
+}
+
+function playSound(button) {
+    if (button === 'red') {
+        sound1 = sounds[0];
+        sound2 = sounds[1];
+    } else if (button === 'green') {
+        sound1 = sounds[2];
+        sound2 = sounds[3];
+    } else if (button === 'blue') {
+        sound1 = sounds[4];
+        sound2 = sounds[5];
+    } else if (button === 'yellow') {
+        sound1 = sounds[6];
+        sound2 = sounds[7];
+    }
+
+    if (sound1.paused && sound2.paused) {
+        sound1.play();
+    } else if (!sound1.paused && sound2.paused) {
+        sound1.pause();  
+        sound1.currentTime = 0;              
+        sound2.play();
+    } else if (sound1.paused && !sound2.paused) {
+        sound2.pause();
+        sound2.currentTime = 0;    
+        sound1.play();            
     }
 }
