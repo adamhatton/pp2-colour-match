@@ -187,7 +187,7 @@ function showSequence() {
     //Set buttons to active after animation has finished
     buttonsActiveTimeout = setTimeout(function () {
         buttonsActive = true;
-    }, ((500 * i) + 10));
+    }, (500 * i));
 }
 
 /**
@@ -227,12 +227,6 @@ function addGameButtonListeners(button) {
         }
     });
 
-    button.addEventListener('mouseup', function (){
-        if(buttonsActive) {
-            button.style.opacity = 0.5;
-        }
-    });
-
     button.addEventListener('mouseleave', function (){
         if(buttonsActive) {
             button.style.opacity = 0.5;
@@ -247,11 +241,7 @@ function addGameButtonListeners(button) {
         }
     });
 
-    button.addEventListener('touchend', function (){
-        if(buttonsActive) {
-            button.style.opacity = 0.5;
-        }
-    });
+    button.addEventListener('touchend', checkPlayerInput);
 
     button.addEventListener('click', checkPlayerInput);
 }
@@ -303,6 +293,10 @@ function addNavButtonListeners(button){
  * buttons are active and there is at least 1 entry in the array.
  */
 function checkPlayerInput() {
+
+    if (buttonsActive) {
+        this.style.opacity = 0.5;
+    }
 
     if(buttonsActive && gameSequence.length > 0) {
 
