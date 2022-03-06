@@ -206,7 +206,7 @@ button {
     display: flex;
     flex-direction: column;
     max-width: 500px;
-    min-width: 360px;
+    min-width: 300px;
     transform: translateY(-20%);
     color: #fff;
     border: 1px solid #fff;
@@ -230,6 +230,12 @@ button {
 .modal-content > p {
     padding: 2rem 1rem;
     text-align: center;
+}
+
+.modal-content > ol {
+    align-self: end;
+    padding-left: 5rem;
+    margin: 1rem auto 2rem auto;
 }
 
 
