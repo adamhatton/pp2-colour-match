@@ -206,7 +206,7 @@ button {
     display: flex;
     flex-direction: column;
     max-width: 500px;
-    min-width: 300px;
+    min-width: 360px;
     transform: translateY(-20%);
     color: #fff;
     border: 1px solid #fff;
@@ -217,10 +217,14 @@ button {
     font-size: 4rem;
     padding: 1rem 1rem 0 0;
     line-height: 1.6rem;
+    background-color: black;
+    color: #fff;
+    margin-top: 1px;
 }
 
 .close-btn:hover, .close-btn:focus {
     cursor: pointer;
+    color: #FF0002;
 }
 
 .modal-content > p {

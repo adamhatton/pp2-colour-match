@@ -81,37 +81,37 @@
                     <source src="assets/sounds/yellow-sound.ogg" type="audio/ogg">
                 </audio>
             </button>
-            <div class="level-container">Level : <span class="level"></span></div>
+            <p class="level-container">Level : <span class="level"></span></p>
         </main>
     </div>
 
     <!-- rules modal -->
-    <div id="rules" class="modal">
+    <section id="rules" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="rules-title" class="title">Rules</div>
+            <button class="close-btn" type="button" aria-label="Close rules">&times;</button>
+            <h2 id="rules-title" class="title">Rules</h2>
             <p>Watch the pattern and repeat it back, simple as that!</p>
         </div>
-    </div>
+    </section>
 
     <!-- high score modal -->
-    <div id="high-score" class="modal">
+    <section id="high-score" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="high-score-title" class="title">High Score</div>
+            <button class="close-btn" type="button" aria-label="Close high score">&times;</button>
+            <h2 id="high-score-title" class="title">High Score</h2>
             <p>Your high score is: <span class="level"></span></p>
         </div>
-    </div>
+    </section>
 
     <!-- game over modal -->
-    <div id="game-over" class="modal">
+    <section id="game-over" class="modal">
         <div class="game-over-content modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="game-over-title" class="title">Game Over!</div>
+            <button class="close-btn" type="button" aria-label="Close game over message">&times;</button>
+            <h2 id="game-over-title" class="title">Game Over!</h2>
             <p id="game-over-message"></p>
             <p>Your score: <span class="level"></span></p>
         </div>
-    </div>
+    </section>
 
 
     <script src="assets/js/script.js"></script>
