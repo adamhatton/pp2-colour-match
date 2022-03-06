@@ -1,30 +1,8 @@
-const levelText = document.getElementsByClassName('level')[0];
 const highScoreText = document.getElementsByClassName('level')[1];
-const scoreText = document.getElementsByClassName('level')[2];
-const gameButtons = document.getElementsByClassName('game-tile');
-const navButtons = document.getElementsByClassName('btn');
 const menu = document.getElementById('menu');
 const onTimeouts = {};
 const offTimeouts = {};
-const redSound1 = new Audio('assets/sounds/red-sound.mp3');
-const redSound2 = new Audio('assets/sounds/red-sound.mp3');
-const greenSound1 = new Audio('assets/sounds/green-sound.mp3');
-const greenSound2 = new Audio('assets/sounds/green-sound.mp3');
-const blueSound1 = new Audio('assets/sounds/blue-sound.mp3');
-const blueSound2 = new Audio('assets/sounds/blue-sound.mp3');
-const yellowSound1 = new Audio('assets/sounds/yellow-sound.mp3');
-const yellowSound2 = new Audio('assets/sounds/yellow-sound.mp3');
-const sounds = [
-    redSound1,
-    redSound2,
-    greenSound1,
-    greenSound2,
-    blueSound1,
-    blueSound2,
-    yellowSound1,
-    yellowSound2
-];
-let sound1, sound2;
+let mainSound, cycleSound;
 let gameSequence = [];
 let level = 0;
 let highScore = 0;
@@ -35,7 +13,7 @@ let buttonsActiveTimeout;
 document.addEventListener('DOMContentLoaded', function () {
 
     //Add listener to play-tile to show game area, hide menu and set up game area elements
-    let playBtn = document.getElementById('play-btn');
+    const playBtn = document.getElementById('play-btn');
     playBtn.addEventListener('click', function () {
         showArea(document.getElementsByClassName('game-area')[0]);
         hideArea(menu);
@@ -49,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     //Add listener to menu button to hide game area, show menu and reset level data
-    let menuBtn = document.getElementById('menu-btn');
+    const menuBtn = document.getElementById('menu-btn');
     menuBtn.addEventListener('click', function () {
         hideArea(document.getElementsByClassName('game-area')[0]);
         showArea(menu);
@@ -69,31 +47,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     //Add listener to rules tile to show rules modal
-    let rulesBtn = document.getElementById('rules-btn');
+    const rulesBtn = document.getElementById('rules-btn');
     rulesBtn.addEventListener('click', function () {
         showArea(document.getElementById('rules'));
     });
 
     //Add listener to rules modal close button to hide rules modal
-    let rulesCloseBtn = document.getElementsByClassName('close-btn')[0];
+    const rulesCloseBtn = document.getElementsByClassName('close-btn')[0];
     rulesCloseBtn.addEventListener('click', function () {
         hideArea(document.getElementById('rules'));
     });
 
     //Add listener to high-score tile to show high score modal
-    let highScoreBtn = document.getElementById('high-score-btn');
+    const highScoreBtn = document.getElementById('high-score-btn');
     highScoreBtn.addEventListener('click', function () {
         showArea(document.getElementById('high-score'));
     });
 
     //Add listener to high-score modal close button to hide high score modal
-    let highScoreCloseBtn = document.getElementsByClassName('close-btn')[1];
+    const highScoreCloseBtn = document.getElementsByClassName('close-btn')[1];
     highScoreCloseBtn.addEventListener('click', function () {
         hideArea(document.getElementById('high-score'));
     });
 
     //Add listener to start-button to start game
-    let startBtn = document.getElementById('start-btn');
+    const startBtn = document.getElementById('start-btn');
     startBtn.addEventListener('click', function () {
         if (buttonsActive) {
             startGame();
@@ -101,22 +79,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     //Add event listeners to animate colour buttons
+    const gameButtons = document.getElementsByClassName('game-tile');
     for (let button of gameButtons) {     
         addGameButtonListeners(button);
     }
 
     //Add event listeners to animate navigation buttons
+    const navButtons = document.getElementsByClassName('btn');
     for (let button of navButtons) {     
         addNavButtonListeners(button);
     }
 
     //Add eventlisteners to logo
     addLogoListeners();
+
+    //Set high score text
+    highScoreText.innerHTML = highScore;
 });
 
 /**
- * Starts the game by disabling buttons, generating a random colour array and then 
- * displaying the array as a sequence to the player
+ * Starts the game by calling addRandomColour and showSequence
  */
 function startGame() {
     level = 1;
@@ -153,8 +135,8 @@ function addRandomColour() {
 }
 
 /**
- * Shows the sequence by looping through each element in gameSequence array and increasing
- * then decreasing the opacity on a timer
+ * Disable buttons then shows the sequence by looping through each element in
+ * gameSequence array and increasing then decreasing the opacity on a timer
  */
 function showSequence() {
     buttonsActive = false;
@@ -292,7 +274,10 @@ function nextLevel() {
 /**
  * Sets the players score on both the game screen and game over screen
  */
-function updateLevelText(){
+function updateLevelText() {
+    const levelText = document.getElementsByClassName('level')[0];
+    const scoreText = document.getElementsByClassName('level')[2];
+
     levelText.innerHTML = level;
     scoreText.innerHTML = level - 1;
 }
@@ -303,7 +288,7 @@ function updateLevelText(){
  */
 function gameOver() {
 
-        let gameOverMessages = [
+        const gameOverMessages = [
             'Combo breaker!',
             'Do it again...but better!',
             'Try again!',
@@ -311,15 +296,16 @@ function gameOver() {
             'Have you tried pressing the Color Match logo?'
         ];
 
-        //Show game over modal
-        let gameOverModal = document.getElementById('game-over');
-        showArea(gameOverModal);
-
-        let gameOverMessage = document.getElementById('game-over-message');
+        //Add random message from gameOverMessages to content gameOverModal
+        const gameOverMessage = document.getElementById('game-over-message');
         gameOverMessage.innerHTML = gameOverMessages[Math.floor(Math.random() * 5)];
+
+        //Show game over modal
+        const gameOverModal = document.getElementById('game-over');
+        showArea(gameOverModal);
     
         //Add listener to game over modal close-button that closes the modal
-        let closeBtn = document.getElementsByClassName('close-btn')[2];
+        const closeBtn = document.getElementsByClassName('close-btn')[2];
         closeBtn.addEventListener('click', function () {
             hideArea(gameOverModal);
         });
@@ -333,7 +319,7 @@ function gameOver() {
  * Adds listeners to the logo
  */
 function addLogoListeners() {
-    let logo = document.getElementById('game-title');
+    const logo = document.getElementById('game-title');
     logo.addEventListener('click', logoColourSwitch);
     logo.addEventListener('touchend', logoColourSwitch);
 }
@@ -342,8 +328,8 @@ function addLogoListeners() {
  * Changes the colour of the letters in the logo when clicked
  */
 function logoColourSwitch() {
-    let colours = ['#FF0002', '#00DE3E', '#0000FF', '#FFD400'];
-    let logoLetters = document.getElementsByClassName('game-title-letter');
+    const colours = ['#FF0002', '#00DE3E', '#0000FF', '#FFD400'];
+    const logoLetters = document.getElementsByClassName('game-title-letter');
 
     for (let letter of logoLetters) {
         letter.style.color = colours[Math.floor(Math.random() * 4)];
@@ -355,41 +341,70 @@ function logoColourSwitch() {
  * assigned which are stopped and started accordingly to allow a sound on every click.
  */
 function playSound(button) {
+
+    const redSound1 = new Audio('assets/sounds/red-sound.mp3');
+    const redSound2 = new Audio('assets/sounds/red-sound.mp3');
+    const greenSound1 = new Audio('assets/sounds/green-sound.mp3');
+    const greenSound2 = new Audio('assets/sounds/green-sound.mp3');
+    const blueSound1 = new Audio('assets/sounds/blue-sound.mp3');
+    const blueSound2 = new Audio('assets/sounds/blue-sound.mp3');
+    const yellowSound1 = new Audio('assets/sounds/yellow-sound.mp3');
+    const yellowSound2 = new Audio('assets/sounds/yellow-sound.mp3');
+    const sounds = [
+        redSound1,
+        redSound2,
+        greenSound1,
+        greenSound2,
+        blueSound1,
+        blueSound2,
+        yellowSound1,
+        yellowSound2
+    ];
+
     if (button === 'red') {
-        sound1 = sounds[0];
-        sound2 = sounds[1];
+        mainSound = sounds[0];
+        cycleSound = sounds[1];
     } else if (button === 'green') {
-        sound1 = sounds[2];
-        sound2 = sounds[3];
+        mainSound = sounds[2];
+        cycleSound = sounds[3];
     } else if (button === 'blue') {
-        sound1 = sounds[4];
-        sound2 = sounds[5];
+        mainSound = sounds[4];
+        cycleSound = sounds[5];
     } else if (button === 'yellow') {
-        sound1 = sounds[6];
-        sound2 = sounds[7];
+        mainSound = sounds[6];
+        cycleSound = sounds[7];
     }
 
-    if (sound1.paused && sound2.paused) {
-        sound1.play();
-    } else if (!sound1.paused && sound2.paused) {
-        sound1.pause();  
-        sound1.currentTime = 0;              
-        sound2.play();
-    } else if (sound1.paused && !sound2.paused) {
-        sound2.pause();
-        sound2.currentTime = 0;    
-        sound1.play();            
+    if (mainSound.paused && cycleSound.paused) {
+        mainSound.play();
+    } else if (!mainSound.paused && cycleSound.paused) {
+        mainSound.pause();  
+        mainSound.currentTime = 0;              
+        cycleSound.play();
+    } else if (mainSound.paused && !cycleSound.paused) {
+        cycleSound.pause();
+        cycleSound.currentTime = 0;    
+        mainSound.play();            
     }
 }
 
+/**
+ * Sets the given element to be visible 
+ */
 function showArea(area) {
     area.style.display = 'flex';
 }
 
+/**
+ * Sets the given element to be hidden 
+ */
 function hideArea(area) {
     area.style.display = 'none';
 }
 
+/**
+ * Checks if score is higher than Highscore and updates high score text 
+ */
 function setHighScore() {
     if((level - 1) > highScore) {
         highScore = level - 1;
