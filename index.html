@@ -17,7 +17,7 @@
     <div class="main-wrapper">
 
         <!-- menu wrapper -->
-        <div id="menu">
+        <div id="menu" role="region" aria-label="Game menu">
             <h1 id="game-title" class="title">
                 <span class="game-title-letter">c</span>
                 <span class="game-title-letter">o</span>
@@ -28,53 +28,61 @@
                 <span id="title-match">Match</span>
             </h1>
             <div class="menu-options">
-                <div id="play-btn" class="tile red-tile">
-                    <p>Play</p>
-                </div>
-                <div id="rules-btn" class="tile green-tile">
-                    <p>Rules</p>
-                </div>
-                <div id="high-score-btn"class="tile blue-tile">
-                    <p>High Score</p>
-                </div>
-                <div id="abt-btn" class="tile yellow-tile">
-                    <p>About</p>
-                </div>
+                <button id="play-btn" class="tile red-tile" type="button" aria-labelledby="play-btn-text"
+                    aria-description="Go to the game area">
+                    <span id="play-btn-text">Play</span>
+                </button>
+                <button id="rules-btn" class="tile green-tile" type="button" aria-labelledby="rules-btn-text"
+                    aria-description="Show the game rules">
+                    <span id="rules-btn-text">Rules</span>
+                </button>
+                <button id="high-score-btn" class="tile blue-tile" type="button" aria-labelledby="high-score-btn-text"
+                    aria-description="Show the high score">
+                    <span id="high-score-btn-text">High Score</span>
+                </button>
+                <button id="abt-btn" class="tile yellow-tile" type="button" aria-labelledby="abt-btn-text"
+                    aria-description="Show information about the author">
+                    <span id="abt-btn-text">About</span>
+                </button>
             </div>
         </div>
 
         <!-- game wrapper -->
-        <div class="game-area">
+        <main class="game-area" aria-label="Game interface">
             <div class="btn-holder">
-                <button id="start-btn" class="btn">Start</button>
-                <button id="menu-btn" class="btn">Menu</button>
-            </div>            
-            <div id="red-btn" data-colour="red" class="tile game-tile">
+                <button id="start-btn" class="btn" type="button" aria-description="Start the game">Start</button>
+                <button id="menu-btn" class="btn" type="button" aria-description="Return to the game menu">Menu</button>
+            </div>
+            <button id="red-btn" data-colour="red" class="tile game-tile" type="button" aria-label="Red button"
+                aria-description="Adds the colour red to the player's input sequence">
                 <audio id="red-sound">
                     <source src="assets/sounds/red-sound.mp3" type="audio/mpeg">
                     <source src="assets/sounds/red-sound.ogg" type="audio/ogg">
                 </audio>
-            </div>
-            <div id="green-btn" data-colour="green" class="tile game-tile">
+            </button>
+            <button id="green-btn" data-colour="green" class="tile game-tile" type="button" aria-label="Green button"
+                aria-description="Adds the colour green to the player's input sequence">
                 <audio id="green-sound">
                     <source src="assets/sounds/green-sound.mp3" type="audio/mpeg">
                     <source src="assets/sounds/green-sound.ogg" type="audio/ogg">
                 </audio>
-            </div>
-            <div id="blue-btn" data-colour="blue" class="tile game-tile">
+            </button>
+            <button id="blue-btn" data-colour="blue" class="tile game-tile" type="button" aria-label="Blue button"
+                aria-description="Adds the colour blue to the player's input sequence">
                 <audio id="blue-sound">
                     <source src="assets/sounds/blue-sound.mp3" type="audio/mpeg">
                     <source src="assets/sounds/blue-sound.ogg" type="audio/ogg">
                 </audio>
-            </div>
-            <div id="yellow-btn" data-colour="yellow" class="tile game-tile">
+            </button>
+            <button id="yellow-btn" data-colour="yellow" class="tile game-tile" type="button" aria-label="Yellow button"
+                aria-description="Adds the colour yellow to the player's input sequence">
                 <audio id="yellow-sound">
                     <source src="assets/sounds/yellow-sound.mp3" type="audio/mpeg">
                     <source src="assets/sounds/yellow-sound.ogg" type="audio/ogg">
                 </audio>
-            </div>
+            </button>
             <div class="level-container">Level : <span class="level"></span></div>
-        </div>
+        </main>
     </div>
 
     <!-- rules modal -->
@@ -101,10 +109,10 @@
             <span class="close-btn">&times;</span>
             <div id="game-over-title" class="title">Game Over!</div>
             <p id="game-over-message"></p>
-            <p>Your score: <span class="level"></span></p>            
+            <p>Your score: <span class="level"></span></p>
         </div>
     </div>
-    
+
 
     <script src="assets/js/script.js"></script>
 </body>
