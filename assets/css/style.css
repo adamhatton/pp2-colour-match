@@ -47,6 +47,14 @@ body {
     user-select: none;
 }
 
+.game-title-letter {
+    letter-spacing: -5px;
+}
+
+#title-match {
+    margin-left: 1rem;
+}
+
 .title {
     font-family: 'Luckiest Guy', Orbitron, monospace;
     font-size: 4rem;
