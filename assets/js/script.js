@@ -70,6 +70,18 @@ document.addEventListener('DOMContentLoaded', function () {
         hideArea(document.getElementById('high-score'));
     });
 
+    //Add listener to about tile to show about modal
+    const aboutBtn = document.getElementById('abt-btn');
+    aboutBtn.addEventListener('click', function () {
+        showArea(document.getElementById('about'));
+    });
+
+    //Add listener to about modal close button to hide about modal
+    const aboutCloseBtn = document.getElementsByClassName('close-btn')[3];
+    aboutCloseBtn.addEventListener('click', function () {
+        hideArea(document.getElementById('about'));
+    });
+
     //Add listener to start-button to start game
     const startBtn = document.getElementById('start-btn');
     startBtn.addEventListener('click', function () {
