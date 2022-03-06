@@ -14,7 +14,7 @@
 
 <body>
     <!-- main game wrapper -->
-    <div class="main-wrapper">
+    <main class="main-wrapper">
 
         <!-- menu wrapper -->
         <div id="menu" role="region" aria-label="Game menu">
@@ -48,7 +48,7 @@
         </div>
 
         <!-- game wrapper -->
-        <main class="game-area" aria-label="Game interface">
+        <div class="game-area" role="region" aria-label="Game interface">
             <div class="btn-holder">
                 <button id="start-btn" class="btn" type="button" aria-description="Start the game">Start</button>
                 <button id="menu-btn" class="btn" type="button" aria-description="Return to the game menu">Menu</button>
@@ -82,8 +82,8 @@
                 </audio>
             </button>
             <p class="level-container">Level : <span class="level"></span></p>
-        </main>
-    </div>
+        </div>
+    </main>
 
     <!-- rules modal -->
     <section id="rules" class="modal">
@@ -113,6 +113,14 @@
         </div>
     </section>
 
+        <!-- about modal -->
+        <section id="about" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" type="button" aria-label="Close about">&times;</button>
+                <h2 id="game-over-title" class="title">About</h2>
+                <p>Designed and created by Adam Hatton</p>
+            </div>
+        </section> 
 
     <script src="assets/js/script.js"></script>
 </body>
