@@ -52,11 +52,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Clear timeouts that are set on the sequence animation
         for (let i in onTimeouts) {
-            clearTimeout(onTimeouts[i]);
+            if (onTimeouts.hasOwnProperty(i)) {
+                clearTimeout(onTimeouts[i]);
+            }
         }
 
         for (let i in offTimeouts) {
-            clearTimeout(offTimeouts[i]);
+            if (offTimeouts.hasOwnProperty(i)) {
+                clearTimeout(offTimeouts[i]);
+            }
         }
 
         clearTimeout(buttonsActiveTimeout);
