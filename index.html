@@ -8,6 +8,7 @@
     <meta name="description" content="Colour Match, a fun pattern matching game">
     <meta name="keywords" content="online game, simon says, pattern game, colour game">
     <meta name="author" content="Adam Hatton">
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Colour Match</title>
 </head>
@@ -17,7 +18,7 @@
     <main class="main-wrapper">
 
         <!-- menu wrapper -->
-        <div id="menu" role="region" aria-label="Game menu">
+        <section id="menu" aria-label="Game menu">
             <h1 id="game-title" class="title">
                 <span class="game-title-letter">c</span>
                 <span class="game-title-letter">o</span>
@@ -45,7 +46,7 @@
                     <span id="abt-btn-text">About</span>
                 </button>
             </div>
-        </div>
+        </section>
 
         <!-- game wrapper -->
         <div class="game-area" role="region" aria-label="Game interface">
@@ -83,40 +84,39 @@
             </button>
             <p class="level-container">Level : <span class="level"></span></p>
         </div>
-    </main>
 
-    <!-- rules modal -->
-    <section id="rules" class="modal">
-        <div class="modal-content">
-            <button class="close-btn" type="button" aria-label="Close rules">&times;</button>
-            <h2 id="rules-title" class="title">Rules</h2>
-            <ol>
-                <li>Press 'start' to begin the game</li>
-                <li>Watch the pattern</li>
-                <li>Repeat the pattern by pressing the coloured buttons</li>
-                <li>See how far you can get!</li>
-            </ol>
-        </div>
-    </section>
+        <!-- rules modal -->
+        <section id="rules" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" type="button" aria-label="Close rules">&times;</button>
+                <h2 id="rules-title" class="title">Rules</h2>
+                <ol>
+                    <li>Press 'start' to begin the game</li>
+                    <li>Watch the pattern</li>
+                    <li>Repeat the pattern by pressing the coloured buttons</li>
+                    <li>See how far you can get!</li>
+                </ol>
+            </div>
+        </section>
 
-    <!-- high score modal -->
-    <section id="high-score" class="modal">
-        <div class="modal-content">
-            <button class="close-btn" type="button" aria-label="Close high score">&times;</button>
-            <h2 id="high-score-title" class="title">High Score</h2>
-            <p>Your high score is: <span class="level"></span></p>
-        </div>
-    </section>
+        <!-- high score modal -->
+        <section id="high-score" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" type="button" aria-label="Close high score">&times;</button>
+                <h2 id="high-score-title" class="title">High Score</h2>
+                <p>Your high score is: <span class="level"></span></p>
+            </div>
+        </section>
 
-    <!-- game over modal -->
-    <section id="game-over" class="modal">
-        <div class="game-over-content modal-content">
-            <button class="close-btn" type="button" aria-label="Close game over message">&times;</button>
-            <h2 id="game-over-title" class="title">Game Over!</h2>
-            <p id="game-over-message"></p>
-            <p>Your score: <span class="level"></span></p>
-        </div>
-    </section>
+        <!-- game over modal -->
+        <section id="game-over" class="modal">
+            <div class="game-over-content modal-content">
+                <button class="close-btn" type="button" aria-label="Close game over message">&times;</button>
+                <h2 id="game-over-title" class="title">Game Over!</h2>
+                <p id="game-over-message"></p>
+                <p>Your score: <span class="level"></span></p>
+            </div>
+        </section>
 
         <!-- about modal -->
         <section id="about" class="modal">
@@ -125,8 +125,10 @@
                 <h2 id="game-over-title" class="title">About</h2>
                 <p>Designed and created by Adam Hatton</p>
             </div>
-        </section> 
+        </section>
+    </main>
 
+    <!-- scripts -->
     <script src="assets/js/script.js"></script>
 </body>
 
