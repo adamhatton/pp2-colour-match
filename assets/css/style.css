@@ -234,7 +234,7 @@ button {
 
 .modal-content > ol {
     align-self: end;
-    padding-left: 5rem;
+    padding: 0 1rem 0 5rem;
     margin: 1rem auto 2rem auto;
 }
 
@@ -252,6 +252,7 @@ button {
 }
 
 /* Media queries */
+/* Stop 'sticky' hover events occuring on touch devices */
 @media (hover: hover) and (pointer: fine) {
     .btn:hover {
         background-color: black;
@@ -260,6 +261,7 @@ button {
     }
 }
 
+/* Change grid from 2x2 to 1x4 when screen height is <620px */
 @media screen and (max-height: 620px) {
     .tile {
         width: 25%;
@@ -269,4 +271,11 @@ button {
     .modal-content {
         transform: translateY(0);
         }
+}
+
+/* Decrease fontsize of list text on smaller screens */
+@media screen and (max-width: 350px) {
+    .modal-content > ol {
+        font-size: 1.6rem;
+    }
 }

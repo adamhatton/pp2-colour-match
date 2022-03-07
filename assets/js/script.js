@@ -211,8 +211,8 @@ function addGameButtonListeners(button) {
     button.addEventListener('touchstart', function (e){
         if(buttonsActive) {
             e.preventDefault();
-            button.style.opacity = 1;
             playSound(button.getAttribute('data-colour'));
+            button.style.opacity = 1;
         }
     });
 
