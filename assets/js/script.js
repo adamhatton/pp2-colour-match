@@ -2,6 +2,24 @@ const highScoreText = document.getElementsByClassName('level')[1];
 const menu = document.getElementById('menu');
 const onTimeouts = {};
 const offTimeouts = {};
+const redSound1 = new Audio('assets/sounds/red-sound.mp3');
+const redSound2 = new Audio('assets/sounds/red-sound.mp3');
+const greenSound1 = new Audio('assets/sounds/green-sound.mp3');
+const greenSound2 = new Audio('assets/sounds/green-sound.mp3');
+const blueSound1 = new Audio('assets/sounds/blue-sound.mp3');
+const blueSound2 = new Audio('assets/sounds/blue-sound.mp3');
+const yellowSound1 = new Audio('assets/sounds/yellow-sound.mp3');
+const yellowSound2 = new Audio('assets/sounds/yellow-sound.mp3');
+const sounds = [
+    redSound1,
+    redSound2,
+    greenSound1,
+    greenSound2,
+    blueSound1,
+    blueSound2,
+    yellowSound1,
+    yellowSound2
+];
 let mainSound, cycleSound;
 let gameSequence = [];
 let level = 0;
@@ -354,24 +372,7 @@ function logoColourSwitch() {
  */
 function playSound(button) {
 
-    const redSound1 = new Audio('assets/sounds/red-sound.mp3');
-    const redSound2 = new Audio('assets/sounds/red-sound.mp3');
-    const greenSound1 = new Audio('assets/sounds/green-sound.mp3');
-    const greenSound2 = new Audio('assets/sounds/green-sound.mp3');
-    const blueSound1 = new Audio('assets/sounds/blue-sound.mp3');
-    const blueSound2 = new Audio('assets/sounds/blue-sound.mp3');
-    const yellowSound1 = new Audio('assets/sounds/yellow-sound.mp3');
-    const yellowSound2 = new Audio('assets/sounds/yellow-sound.mp3');
-    const sounds = [
-        redSound1,
-        redSound2,
-        greenSound1,
-        greenSound2,
-        blueSound1,
-        blueSound2,
-        yellowSound1,
-        yellowSound2
-    ];
+
 
     if (button === 'red') {
         mainSound = sounds[0];
