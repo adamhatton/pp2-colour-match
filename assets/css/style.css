@@ -281,8 +281,8 @@ button {
     }
 }
 
-/* Change grid from 2x2 to 1x4 when screen height is <620px */
-@media screen and (max-height: 620px) {
+/* Change grid from 2x2 to 1x4 when screen height is <620px and width is >400px */
+@media screen and (max-height: 640px) and (min-width: 400px) {
     .tile {
         width: 25%;
         padding-top: 25%;
