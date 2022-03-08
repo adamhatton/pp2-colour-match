@@ -140,7 +140,6 @@ function startGame() {
     gameSequence = [];
     gameSequenceStep = 0;
     addRandomColour();
-    console.log(gameSequence);
     showSequence();
 }
 
@@ -278,16 +277,12 @@ function checkPlayerInput() {
     }
 
     if(buttonsActive && gameSequence.length > 0) {
-
-        if(this.getAttribute('data-colour') === gameSequence[gameSequenceStep]) {
-                       
+        if(this.getAttribute('data-colour') === gameSequence[gameSequenceStep]) {                       
             if (gameSequenceStep === gameSequence.length - 1) {
                 nextLevel();
                 return;
-            }
-        
+            }        
         gameSequenceStep++; 
-
         } else {
             gameOver();
         }
@@ -311,7 +306,6 @@ function nextLevel() {
 function updateLevelText() {
     const levelText = document.getElementsByClassName('level')[0];
     const scoreText = document.getElementsByClassName('level')[2];
-
     levelText.innerHTML = level;
     scoreText.innerHTML = level - 1;
 }
@@ -375,9 +369,6 @@ function logoColourSwitch() {
  * assigned which are stopped and started accordingly to allow a sound on every click.
  */
 function playSound(button) {
-
-
-
     if (button === 'red') {
         mainSound = sounds[0];
         cycleSound = sounds[1];
@@ -426,6 +417,5 @@ function setHighScore() {
     if((level - 1) > highScore) {
         highScore = level - 1;
     }
-
     highScoreText.innerHTML = highScore;
 }
