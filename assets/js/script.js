@@ -177,6 +177,8 @@ function showSequence() {
     let i = 1;
 
     for (let colour of gameSequence) {
+        /* Solution for adding each timeOut() function to a global variable so that they can be cleared
+        was provided by Code Institute Tutor Support */
         onTimeouts["timeout" + i] = setTimeout(function () {
             document.getElementById(`${colour}-btn`).style.opacity = 1;
             playSound(colour);
