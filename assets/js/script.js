@@ -169,7 +169,8 @@ function addRandomColour() {
 
 /**
  * Disable buttons then shows the sequence by looping through each element in
- * gameSequence array and increasing then decreasing the opacity on a timer
+ * gameSequence array and increasing then decreasing the opacity on a timer 
+ * whilst also playing a sound
  */
 function showSequence() {
     buttonsActive = false;

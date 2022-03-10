@@ -33,6 +33,43 @@ Screenshots of the two main sections can be seen below:
 
 </details>
 
+## Table of Contents
+- [Features](<#features>)
+	- [Existing Features](<#existing-features>)
+		- [Game Menu](<#game-menu>)
+		- [Game Logo](<#game-logo>)
+		- [Game Area](<#game-area>)
+		- [Navigation Buttons](<#navigation-buttons>)
+		- [Game Over Pop-up](<#game-over-pop-up>)
+		- [Rules Pop-up](<#rules-pop-up>)
+		- [High Score Pop-up](<#high-score-pop-up>)
+		- [About Pop-up](<#about-pop-up>)
+	- [Future Features](<#future-features>)
+- [User Experience](<#user-experience>)
+	- [User Stories](<#user-stories>)
+	- [Design](<#design>)
+		- [Colours](<#colours>)
+		- [Typography](<#typography>)
+		- [Imagery](<#imagery>)
+		- [Wireframes](<#wireframes>)
+- [Technologies](<#technologies>)
+	- [Development Technologies](<#development-technologies>)
+	- [Testing Technologies](<#testing-technologies>)
+- [Testing](<#testing>)
+	- [User Stories](<#user-stories>)
+	- [Validation and Manual Testing](<#validation-and-manual-testing>)
+		- [Validation](<#validation>)
+		- [Manual Testing](<#manual-testing>)
+- [Bugs](<#bugs>)
+- [Deployment](<#deployment>)
+- [Forking](<#forking>)
+- [Credits/Resources](<#credits/resources>)
+	- [Code](<#code>)
+	- [Content](<#content>)
+	- [Media](<#media>)
+	- [Acknowledgements](<#acknowledgements>)
+
+
 ## Features
 
 In this section I will describe each of the features of the website and their value. How the features meet the needs of the user stories is also explored in the [testing section](<#testing>).
@@ -212,22 +249,22 @@ The website uses a single image. This is background image of varying gradients b
 ### User Stories
 
 **As a user I want to easily understand the purpose of the website
-- On the landing page, the user is presented with large buttons labelled "Play", "Rules" and "High Score", making it immediately clear that it is a game
-- The user is able to select the "Rules" button to be presented with a short list of rules that explain how the game works
+- On the landing page, the user is presented with large buttons labelled "Play", "Rules" and "High Score", making it immediately clear that it is a game ([see game menu](<#game-menu>))
+- The user is able to select the "Rules" button to be presented with a short list of rules that explain how the game works ([see game menu](<#game-menu>)) and ([rules pop-up](<#rules-pop-up>))
 
 **As a user I want navigation and interaction to be intuitive and easy to pick up
-- The buttons on the Game Menu page are clearly labelled with their purpose and are in line with options that a user would expect to see in a game
+- The buttons on the Game Menu page are clearly labelled with their purpose and are in line with options that a user would expect to see in a game ([see game menu](<#game-menu>))
 - All buttons provide feedback to the user that they perform an action through the use of hover and onclick effects
 - When a pop-up is used, the game can still be seen in the background to make sure the user knows they can easily get back to it
-- The screens have a minimalist design which is consistent throughout so that the user does not get lost
+- The screens have a minimalist design which is consistent throughout so that the user does not get lost ([see game menu](<#game-menu>)) and ([see game area](<#game-area>))
 
 **As a user I want to be able to exit the game at any point
 - When playing the game, the user is able to return to the menu at any point, including whilst an animation is playing. This will stop the game and reset the variables so that they do not feel trapped
 
 **As a user I want to be able to keep track of how well I am doing at the game
-- When playing the game there is a level counter which displays the level that the user is on
-- When a game is finished the user is presented with a popup which shows them their score for that particular game
-- There is a highscore button on the Game Menu which allows a user to see their best score so far
+- When playing the game there is a level counter which displays the level that the user is on ([see score counter](<#score-counter>))
+- When a game is finished the user is presented with a popup which shows them their score for that particular game ([see game over pop-up](<#game-over-pop-up>))
+- There is a highscore button on the Game Menu which allows a user to see their best score so far ([see game menu](<#game-menu>)) and ([see high score pop-up](<#high-score-pop-up>))
 
 **As a user I want the website to be responsive to the device I am using it on
 - Due to the simple design, the game displays consistently across all devices
@@ -315,6 +352,7 @@ Upon inspection of my html code I determined that this was due to the use of the
 
 </details>
 
+#### Manual Testing
 
 The following tests were made on a desktop using 3 separate browsers: Chrome, Edge and Firefox. The checks were also replicated on a Samsung Galaxy s21 (apart from checking hover over effects):
 - Play button hides Game Menu and shows Game Area
@@ -336,8 +374,69 @@ The following tests were made on a desktop using 3 separate browsers: Chrome, Ed
 - The game over screen displays the player's score
 - The game over screen cycles through the game over message array
 - The Start button and coloured buttons are disabled when the animation is playing
-- The player can return to the menu at any point, even whilst the animation is playing
-- Game interface responds to different sized screens
+- The menu button returns the player to the menu at any point, even whilst the animation is playing
+- Game interface responds to different sized screens and orientations
+
+## Bugs
+**Firefox Sound bug**
+When testing the game on Firefox, I encountered an issue whereby the sound files sounded distorted and although they could be played rapidly it did not provide as smooth an experience as on other browsers.
+To fix this I changed the audio files from .mp3 to .ogg. For example, where the sounds were previously:
+~~~
+const redSound1 = new Audio('assets/sounds/red-sound.mp3');
+const redSound2 = new Audio('assets/sounds/red-sound.mp3');
+~~~
+I changed these to:
+~~~
+const redSound1 = new Audio('assets/sounds/red-sound.ogg');
+const redSound2 = new Audio('assets/sounds/red-sound.ogg');
+~~~
+After restesting, this produced a much better experience on Firefox and did not impact the playback on other browsers.
+
+**Repeat Sound Not Playing**
+During development I found a bug that when the animation was being shown and a colour was repeated, the sound would repeat (due to the length of the audio file).
+Initially, I was playing the sound by just calling play() on the element:
+~~~
+document.getElementById(`${colour}-sound`).play();
+~~~
+In order to fix this bug I researched how to play overlapping sounds and found that I needed multiple audio objects containing the same sound.
+I created 2 versions of each sound and added these to an array for all my sounds. I then created 2 variables to be used when playing the sound which would be assigned values from the sounds array. These were set so that when one sound is being played and the button is pressed again, the original sound gets paused and the second version of the sound is played, as below:
+~~~
+            if (button.getAttribute('data-colour') === 'red') {
+                sound1 = sounds[0];
+                sound2 = sounds[1];
+            } else if (button.getAttribute('data-colour') === 'green') {
+                sound1 = sounds[2];
+                sound2 = sounds[3];
+            } else if (button.getAttribute('data-colour') === 'blue') {
+                sound1 = sounds[4];
+                sound2 = sounds[5];
+            } else if (button.getAttribute('data-colour') === 'yellow') {
+                sound1 = sounds[6];
+                sound2 = sounds[7];
+            }
+
+            if (sound1.paused && sound2.paused) {
+                sound1.play();
+            } else if (!sound1.paused && sound2.paused) {
+                sound1.pause();  
+                sound1.currentTime = 0;              
+                sound2.play();
+            } else if (sound1.paused && !sound2.paused) {
+                sound2.pause();
+                sound2.currentTime = 0;    
+                sound1.play();            
+            }
+~~~
+This allowed the sound to be played correctly when being repeated in a pattern. In the final version of my code, I refactored this code into a function and renamed the variables to be more descriptive.
+
+**Game Over Bug**
+During development I encountered a bug whereby if a user had played a game and then pressed one of the coloured buttons, it triggered the game over screen to show.
+The checkPlayerInput() function is called when the buttons are active and the array used for the animation sequence has a length greater than one, and if the input is incorrect the gameOver() function will be called it will show the game over screen.
+However, the gameOver() function did not reset the array back to being empty, therefore when clicking the buttons after a game had ended, it was calling checkPlayerInput() unexpectedly.
+To fix this issue, I added an additional line to the gameOver() function to set the array to being empty:
+~~~
+gameSequence = [];
+~~~
 
 ## Deployment
 
@@ -352,6 +451,16 @@ To deploy the live site, the following steps were taken:
 7. Select 'Save'
 8. After a short while, the site was published and confirmation of a live link was provided
 
+## Forking
+
+To fork the repository, please follow the below steps:
+
+1. Go to github.com
+2. Log into your Github account
+3. Use the search function to search for adamhatton/pp2-colour-match to find the repository
+4. Select the repository from the results
+5. On the repository page select 'Fork' in the top right of the page
+6. The repository will be forked to your own Github account
 
 ## Credits/Resources
 
