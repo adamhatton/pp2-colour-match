@@ -2,14 +2,14 @@ const highScoreText = document.getElementsByClassName('level')[1];
 const menu = document.getElementById('menu');
 const onTimeouts = {};
 const offTimeouts = {};
-const redSound1 = new Audio('assets/sounds/red-sound.mp3');
-const redSound2 = new Audio('assets/sounds/red-sound.mp3');
-const greenSound1 = new Audio('assets/sounds/green-sound.mp3');
-const greenSound2 = new Audio('assets/sounds/green-sound.mp3');
-const blueSound1 = new Audio('assets/sounds/blue-sound.mp3');
-const blueSound2 = new Audio('assets/sounds/blue-sound.mp3');
-const yellowSound1 = new Audio('assets/sounds/yellow-sound.mp3');
-const yellowSound2 = new Audio('assets/sounds/yellow-sound.mp3');
+const redSound1 = new Audio('assets/sounds/red-sound.ogg');
+const redSound2 = new Audio('assets/sounds/red-sound.ogg');
+const greenSound1 = new Audio('assets/sounds/green-sound.ogg');
+const greenSound2 = new Audio('assets/sounds/green-sound.ogg');
+const blueSound1 = new Audio('assets/sounds/blue-sound.ogg');
+const blueSound2 = new Audio('assets/sounds/blue-sound.ogg');
+const yellowSound1 = new Audio('assets/sounds/yellow-sound.ogg');
+const yellowSound2 = new Audio('assets/sounds/yellow-sound.ogg');
 const sounds = [
     redSound1,
     redSound2,
