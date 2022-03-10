@@ -1,108 +1,379 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Colour Match
 
-Welcome adamhatton,
+Welcome to the Colour Match website! 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Colour Match is an interactive game where users have to repeat back a colour pattern that gets progressively harder with each turn, inspired by the classic game 'Simon Says'. The goals of the site are:
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+**Site Owner**
+To provide a fun interactive game that is accessible to all age ranges for the purposes of online entertainment.
+To provide a game that is simple to pick up but still capable of providing a challenge. 
 
-## Gitpod Reminders
+**Site Users**
+To play an online game that is fun and entertaining.
+To play an online game that is quick and easy to engage with.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+![responsive mockups](docs/screenshots/responsive-mockups.jpg)
 
-A blue button should appear to click: _Make Public_,
+## Live Site
 
-Another blue button should appear to click: _Open Browser_.
+The live site can be found [here](https://adamhatton.github.io/pp2-colour-match/).
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Screenshots of the two main sections can be seen below:
 
-A blue button should appear to click: _Make Public_,
+<details><summary>Game Menu</summary>
 
-Another blue button should appear to click: _Open Browser_.
+![game menu screenshot](docs/screenshots/game-menu.jpg)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+</details>
 
-To log into the Heroku toolbelt CLI:
+<details><summary>Game Area</summary>
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+![game area screenshot](docs/screenshots/game-area.jpg)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+</details>
 
-------
+## Features
 
-## Release History
+In this section I will describe each of the features of the website and their value. How the features meet the needs of the user stories is also explored in the [testing section](<#testing>).
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Existing Features
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+#### Game Menu
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+- The Game Menu is the landing page for the user, it is a clean and simple layout displaying the game's title logo and 4 large buttons for navigating to different sections, making it immediately obvious what options are available to the user
+- Each button has a hover effect to provide feedback to the user that it is interactive
+- The buttons are clearly and simply labelled to direct the user; they either take the user to the game area or open a popup with more information
+- The layout is responsive to different screen sizes, so that the layout changes to 1x4 on screens with smaller heights
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+![game menu screenshot](docs/screenshots/game-menu.jpg)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+#### Game Logo
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+- The Game Logo is written in a block-style text which has friendly feel
+- When clicked, the logo changes colour. This is not advertised to the user, but is explained in one of the game-over messages (see below), so acts as a type of 'easter egg'
+- The 'hidden' interaction provides a fun and interesting moment for the user, as well as a sense of achievement if they find it without needing to be prompted by the game-over message
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![game menu screenshot](docs/screenshots/logo.jpg)
+![game menu screenshot](docs/screenshots/logo-coloured.jpg)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+#### Game Area
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- The Game Area is opened with the user selects 'Play'. It consists of 2 navigation buttons, 4 coloured buttons and a score counter
+- It follows the same layout as the Game Menu to keep a consistent image for the game
+- When opening the Game Area, animation is used to provide a transition between the 2 areas in order to let the user know they are moving to a different part of the application
+- As with the Game Menu, the layout is responsive to different screen sizes
+- As with the Game Menu, each button has a hover effect to show that it is interactive. In addition, in this area they play a sound when pressed, so the user is not limited to interaction with the game only whilst it is running.
+This also helps to provide the user with an immediate indication of how to interact with the game once they start it.
+- The Game Area is where the game is played. When started, the user will be shown a pattern in the form of the different coloured buttons lighting up. Each colour will also play a sound when it lights up to enhance the interactive aspect.
+Once the pattern is finished, the user can repeat it by pressing the coloured buttons.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+![game area screenshot](docs/screenshots/game-area.jpg)
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+#### Navigation Buttons
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- The 'Start' and 'Menu' buttons are designed with a clean and simple aesthetic, making them clearly visible and their purpose immediately obvious to the user
+- In addition, they both have hover effects and click effects to provide the user with feedback that the buttons do something
+- The 'Start' button begins the game by triggering a pattern sequence, and becomes disabled until the pattern has finished playing (to prevent users accidentally starting the game more than once)
+- The 'Menu' button takes users back to the Game Menu, and this remains active at all times. This means the user can navigate back to the Menu whenever they want to so they don't feel trapped in the Game Area at any point
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+![nav buttons screenshot](docs/screenshots/nav-buttons.jpg)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+#### Score Counter
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- The Score Counter sits at the bottom of Game Area to provide a constant source of feedback to the user
+- It is initially set to 0, and updates after each round that the user inputs the correct pattern, helping the user to keep track of how well they are doing
 
-------
+![score counter screenshot](docs/screenshots/score-counter.jpg)
 
-## FAQ about the uptime script
+#### Game Over Pop-up
 
-**Why have you added this script?**
+- The Game Over Pop-up is triggered when the user incorrectly inputs the pattern
+- It contains a title in the same font as the logo to make its purpose immediately clear, along with a lighthearted message to provide some encouragement/entertainment to the user
+- The pop-up includes the user's score, so they can see how well they did
+- It also includes a close button, which has a hover effect as well as changing the cursor to a pointer to provide feedback to the user that it is interactive
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+![game over screenshot](docs/screenshots/game-over-popup.jpg)
 
-**How will this affect me?**
+#### Rules Pop-up
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+- The Rules Pop-up is opened when the user selects 'Rules' from the Game Menu
+- It contains a title in the same font as the logo to make its purpose immediately clear, along with a short and simple list of rules
+- The rules section is kept separate from the game, so the user is not forced to read them if they think they'll be able to pick up the game intuitively
+- As with the other pop-ups, there is an interactive close button
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+![rules screenshot](docs/screenshots/rules-popup.jpg)
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+#### High Score Pop-up
 
-**So….?**
+- The High Score Pop-up is opened when the user selects 'High Score' from the Game Menu
+- It contains a title in the same font as the logo to make its purpose immediately clear, along with a short message showing the user's high score
+- This section provides a point of reference for the user to see their best score in case they forget
+- As with the other pop-ups, there is an interactive close button
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+![high score screenshot](docs/screenshots/highscore-popup.jpg)
 
-**Can I opt out?**
+#### About Pop-up
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+- The About Pop-up is opened when the user selects 'About' from the Game Menu
+- It contains a title in the same font as the logo to make its purpose immediately clear, along with a short message about the creator
+- As with the other pop-ups, there is an interactive close button
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+![about screenshot](docs/screenshots/rules-popup.jpg)
 
-**Anything more?**
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Future Features
 
----
+- 'Sound off' feature: Not all users will want to have the sound on nor find it useful in the game. As such a mute function would be useful so that users can turn the sound off if they want to
+- Difficulty feature: The game currently only has 1 mode of difficulty. To provide a more versatile experience for the user, a function for increasing or decreasing the difficulty would be useful. This could be done by increasing or decreasing the speed at which the pattern plays.
 
-Happy coding!
+## User Experience
+
+### User Stories
+
+The target audience of the website is people who are looking to play a simple but entertaining online game, so the site has been designed on the basis of the following user stories:
+
+- As a user I want to easily understand the purpose of the website
+- As a user I want navigation and interaction to be intuitive and easy to pick up
+- As a user I want to be able to exit the game at any point
+- As a user I want to be able to keep track of how well I am doing at the game
+- As a user I want the website to be responsive to the device I am using it on
+
+### Design
+
+#### Colours
+
+The below colours have been used throughout the website:
+
+![colour palette screenshot](docs/screenshots/colour-palette.jpg)
+
+The palette was chosen due to it's simplicity; the colours are bold and bright in order to provide a fun and friendly aesthetic, but they also contrast well with each other to create the main purpose of the game: recognising a pattern.
+
+Black and white (#000 and #fff) have been used for backgrounds and text respectively, again due to the sharp contrast they provide. This ensures that text is clear and easily readable and does not detract from the main purpose of playing the game.
+
+#### Typography
+
+The logo and headings use the font Luckiest Guy with a fall-back of Orbitron and then monospace. Luckiest Guy was chosen as it has a fun and playful feel which make it clear that the content of the website is supposed to be fun. Its block-like lettering also helps to punctuate the different sections clearly.
+The text in buttons and the score counter use the font Orbitron with a fall back of courier and then monospace. Orbitron was chosen as it has a sleek form without looking too 'corporate', allowing the buttons to be clearly labelled without being to visually noisy. 
+All other text uses the font Courier with a fall back of monospace. This font was chosen as it is very well recognised and is easy to read.
+'Luckiest Guy' and 'Orbitron' were imported from [Google Fonts](https://fonts.google.com/).
+
+#### Imagery
+
+The website uses a single image. This is background image of varying gradients between the 4 main colours. It was used to fit in with the theme of 'colour' without being distracting from the game.
+
+#### Wireframes
+
+<details><summary>Mobile Wireframes</summary>
+
+![mobile wireframes](docs/wireframes/mobile-wireframes.jpg)
+
+</details>
+
+<details><summary>Desktop Wireframes</summary>
+
+![desktop wireframes](docs/wireframes/desktop-wireframes.jpg)
+
+</details>
+
+## Technologies
+
+### Development Technologies
+
+**Languages**
+- [HTML5](https://en.wikipedia.org/wiki/HTML5) - used to write the structure of the site
+- [CSS](https://en.wikipedia.org/wiki/CSS) - used for the styling of the site
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript) - used to write the interactive functionality of the site
+
+**Frameworks, Libraries and Tools**
+- [Google Fonts](https://fonts.google.com/) - used to import both Luckiest Guy and Orbitron which are the fonts used throughout the entire site
+- [Gitpod](https://www.gitpod.io/) - used to write and develop the website
+- [Git](https://git-scm.com/) – used for version controlling by using the Gitpod terminal to commit to Git, and subsequently pushing to GitHub
+- [GitHub](https://github.com/) – used to store the source code for the website
+- [GitHub pages](https://pages.github.com/) – used to deploy the live site
+- [Balsamiq](https://balsamiq.com/) - used to create the initial wireframes of the website
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/) - used throughout the process for testing the responsiveness of the website, debugging issues, experimenting with layout/style choices, and debugging JavaScript issues
+- [Cloudconvert](https://cloudconvert.com/) - used to convert the background image to .webp format
+- [Techsini](http://techsini.com/multi-mockup/) - used to generate a multi-device mockup (as seen at the beginning of the README)
+- [Hex2RGBA](http://hex2rgba.devoth.com/) - used for converting Hex codes to rgba format
+- [Favicon](https://favicon.io/favicon-generator/) - used for creating a favicon for the site
+
+### Testing Technologies
+
+- [a11y Contrast Checker](https://color.a11y.com/) - used for checking contrast accessibility
+- [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) - used for checking web accessibility
+- [Jigsaw CSS validator](https://jigsaw.w3.org/css-validator/) - used for validating the CSS stylesheet
+- [W3C HTML validator](https://validator.w3.org/) - used for validating the HTML markup
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse) - used for analysing the performance, accessibility, best practices and SEO of the website
+- [JSHint](https://jshint.com/) - used for validating the JavaScript code
+
+## Testing
+
+### User Stories
+
+**As a user I want to easily understand the purpose of the website
+- On the landing page, the user is presented with large buttons labelled "Play", "Rules" and "High Score", making it immediately clear that it is a game
+- The user is able to select the "Rules" button to be presented with a short list of rules that explain how the game works
+
+**As a user I want navigation and interaction to be intuitive and easy to pick up
+- The buttons on the Game Menu page are clearly labelled with their purpose and are in line with options that a user would expect to see in a game
+- All buttons provide feedback to the user that they perform an action through the use of hover and onclick effects
+- When a pop-up is used, the game can still be seen in the background to make sure the user knows they can easily get back to it
+- The screens have a minimalist design which is consistent throughout so that the user does not get lost
+
+**As a user I want to be able to exit the game at any point
+- When playing the game, the user is able to return to the menu at any point, including whilst an animation is playing. This will stop the game and reset the variables so that they do not feel trapped
+
+**As a user I want to be able to keep track of how well I am doing at the game
+- When playing the game there is a level counter which displays the level that the user is on
+- When a game is finished the user is presented with a popup which shows them their score for that particular game
+- There is a highscore button on the Game Menu which allows a user to see their best score so far
+
+**As a user I want the website to be responsive to the device I am using it on
+- Due to the simple design, the game displays consistently across all devices
+- Media queries have been used to change the layout from a 2x2 grid to a 1x4 grid when screen height drops below a certain value
+
+### Validation and Manual Testing
+
+#### Validation
+
+**HTML
+The website was run through the [W3C HTML validator](https://validator.w3.org/). No errors were found (see below screenshot).
+
+<details><summary>HTML Validation</summary>
+
+![html validation screenshot](docs/testing/w3c-test.jpg)
+
+</details>
+
+**CSS
+- The website was run through the [Jigsaw CSS validator](https://jigsaw.w3.org/css-validator/). No errors were found (see below screenshot).
+
+<details><summary>CSS Validation</summary>
+
+![css validation screenshot](docs/testing/jigsaw-test.jpg)
+
+</details>
+
+**JavaScript
+- The JavaScript code was run through [JSHint](https://jshint.com/) configured to 'assume new JavaScript features (ES6)'. This produced no errors, but did produce the following warning in 2 places: "Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (colour, playSound)".
+Due to the complexity of the function involved, I decided to leave this and instead rely on the function comments to clarify:
+
+<details><summary>JavaScript Validation</summary>
+
+![javascript validation screenshot](docs/testing/jshint-test.jpg)
+
+</details>
+
+
+**Accessibility
+- The website was run through the [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/). No errors were highlighted (see below screenshot), however 4 alerts were produced relating to the audio elements on the page. To resolve these alerts a transcript would be needed, however the sounds in question
+are simply sound effects and it does not impact the playability of the game in anyway if they do not play. As such, these alerts were ignored.
+
+<details><summary>WAVE Validation</summary>
+
+![wave validation screenshot](docs/testing/wave-test.jpg)
+
+</details>
+
+<details><summary>WAVE Alerts</summary>
+
+![wave alerts screenshot](docs/testing/wave-test-alerts.jpg)
+
+</details>
+
+In addition, because the WAVE tool does not check contrast on elements that use opacity, the site was run through the [a11y Contrast Checker](https://color.a11y.com/). This initally produced 2 errors due to white text on the Game Menu buttons not having a high enough contrast against the green and yellow buttons.
+To resolve this, I increased the size of the text within the buttons to make it more visible. This also meant that it is treated as large text in terms of the accessiblity guidelines and thus requires a lower contrast ratio. The results can be seen below, but it is worth noting that the text also uses a black text
+shadow which increases the contrast ratio, but this is not picked up by automated testing tools:
+
+<details><summary>A11y Validation</summary>
+
+![a11y validation screenshot](docs/testing/a11y-test.jpg)
+
+</details>
+
+**Lighthouse
+- Each page of the website was run through [Lighthouse](https://developers.google.com/web/tools/lighthouse) to analyse the performance, accessibility, best practices and SEO of the site. Initially the accessibility score was 89 due to the following errors:
+
+<details><summary>Lighthouse Test</summary>
+
+![lighthouse errors screenshot](docs/testing/lighthouse-errors.jpg)
+
+</details>
+
+Upon inspection of my html code I determined that this was due to the use of the 'aria-description' property which is not valid. I removed this and decided to rely on the 'aria-labelledby' for my buttons instead. After rerunning Lighthouse, my site achieved 100 for all scores on desktop and 99+ for all scores on mobile:
+
+<details><summary>Lighthouse Desktop</summary>
+
+![lighthouse desktop screenshot](docs/testing/lighthouse-desktop.jpg)
+
+</details>
+
+<details><summary>Lighthouse Mobile</summary>
+
+![lighthouse mobile screenshot](docs/testing/lighthouse-mobile.jpg)
+
+</details>
+
+
+The following tests were made on a desktop using 3 separate browsers: Chrome, Edge and Firefox. The checks were also replicated on a Samsung Galaxy s21 (apart from checking hover over effects):
+- Play button hides Game Menu and shows Game Area
+- Game Area animation works smoothly
+- Rules, High Score and About buttons all show the relevant popup
+- Hover over effects of Game Menu buttons work
+- Logo changes colour when clicked
+- Close button on every popup works
+- High score content updates when user gets a new high score
+- Start and Menu button hover over and click effects work
+- Start button begins the game by showing the first sequence
+- Game Area buttons play a sound when pressed
+- The user is able to rapidly press the coloured buttons and have a sound trigger each time
+- When the sequence is being shown, each button lights up and plays a sound
+- When the sequence repeats a colour, the sound effects play correctly
+- The score indicator updates after every round the player gets correct
+- If the player's input is correct, the next round is triggered (and the sequence is increased by 1)
+- If the player's input is incorrect, the game over screen is shown
+- The game over screen displays the player's score
+- The game over screen cycles through the game over message array
+- The Start button and coloured buttons are disabled when the animation is playing
+- The player can return to the menu at any point, even whilst the animation is playing
+- Game interface responds to different sized screens
+
+## Deployment
+
+To deploy the live site, the following steps were taken:
+
+1. Go to github.com
+2. Login to my GitHub account
+3. Select the repository 'adamhatton/pp2-colour-match' from my repository list
+4. Go to the settings within the repository
+5. From within settings, select ‘Pages’ from the menu
+6. Select the ‘main’ branch from the ‘Source’ dropdown menu
+7. Select 'Save'
+8. After a short while, the site was published and confirmation of a live link was provided
+
+
+## Credits/Resources
+
+### Code
+
+- I knew that I would be using modals within the interface, so to get a good understanding of how to create these I used [this YouTube tutorial](https://www.youtube.com/watch?v=6ophW7Ask_0) by "Traversy Media"
+- When implementing the animation sequence using setTimeout(), I used [this article](https://www.freecodecamp.org/news/thrown-for-a-loop-understanding-for-loops-and-timeouts-in-javascript-558d8255d8a4/) to understand how the function works
+- In order to get rid of 'sticky' hover events on mobile devices, I used the solution in [this Stack Overflow post](https://stackoverflow.com/questions/17233804/how-to-prevent-sticky-hover-effects-for-buttons-on-touch-devices) (specifically from user 'cvrebert')
+- To prevent the logo text from being highlighted so that the colour change function would work, I discovered the 'userSelect = none' solution from [this Stack Overflow post](https://stackoverflow.com/questions/5429827/how-can-i-prevent-text-element-selection-with-cursor-drag) (specifically from user 'Erkki Teedla')
+- To prevent the 'touchstart' event from causing duplicated sounds from playing due to it also calling the 'mousedown' event, I learned that the preventDefault() function could be used to prevent this from [this Stack Overflow post](https://stackoverflow.com/questions/13655919/how-to-bind-both-mousedown-and-touchstart-but-not-respond-to-both-android-jqu) (specifically from user 'Radu C')
+- When trying to figure out how to to play the same sound more than once at the same time, I learned that separate audio objects are needed from [this Stack Overflow post](https://stackoverflow.com/questions/38552703/overlapping-sound-i-javascript/38553024) (specifically from user 'Stanislav Lavrov')
+- The first time I ran my code through JSHint I received the following warning: 'The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.'. In order to understand how to fix this warning, I used [this Stack Overflow post](https://stackoverflow.com/questions/1963102/what-does-the-jslint-error-body-of-a-for-in-should-be-wrapped-in-an-if-statemen)
+
+### Content
+
+- All content was written by Adam Hatton (the developer)
+
+### Media
+
+- The background image was created specifically for this project by my partner, Nichola Leafe
+
+### Acknowledgements
+
+- I'd like to thank my mentor Spencer Barriball for his guidance in the planning stage of the project and feedback on the finished product
+- I'd also like to thank my Partner Nichola for her constant support and feedback on what I was creating
