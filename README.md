@@ -58,14 +58,14 @@ Screenshots of the two main sections can be seen below:
 	- [Development Technologies](<#development-technologies>)
 	- [Testing Technologies](<#testing-technologies>)
 - [Testing](<#testing>)
-	- [User Stories](<#user-stories>)
+	- [User Stories Testing](<#user-stories-testing>)
 	- [Validation and Manual Testing](<#validation-and-manual-testing>)
 		- [Validation](<#validation>)
 		- [Manual Testing](<#manual-testing>)
 - [Bugs](<#bugs>)
 - [Deployment](<#deployment>)
 - [Forking](<#forking>)
-- [Credits/Resources](<#credits/resources>)
+- [Credits and Resources](<#credits-and-resources>)
 	- [Code](<#code>)
 	- [Content](<#content>)
 	- [Media](<#media>)
@@ -249,7 +249,7 @@ The website uses a single image. This is background image of varying gradients b
 
 ## Testing
 
-### User Stories
+### User Stories Testing
 
 **As a user I want to easily understand the purpose of the website**
 - On the landing page, the user is presented with large buttons labelled "Play", "Rules" and "High Score", making it immediately clear that it is a game ([see game menu](<#game-menu>))
@@ -470,7 +470,7 @@ To fork the repository, please follow the below steps:
 5. On the repository page select 'Fork' in the top right of the page
 6. The repository will be forked to your own Github account
 
-## Credits/Resources
+## Credits and Resources
 
 ### Code
 
