@@ -481,6 +481,7 @@ To fork the repository, please follow the below steps:
 - To prevent the 'touchstart' event from causing duplicated sounds from playing due to it also calling the 'mousedown' event, I learned that the preventDefault() function could be used to prevent this from [this Stack Overflow post](https://stackoverflow.com/questions/13655919/how-to-bind-both-mousedown-and-touchstart-but-not-respond-to-both-android-jqu) (specifically from user 'Radu C')
 - When trying to figure out how to to play the same sound more than once at the same time, I learned that separate audio objects are needed from [this Stack Overflow post](https://stackoverflow.com/questions/38552703/overlapping-sound-i-javascript/38553024) (specifically from user 'Stanislav Lavrov')
 - The first time I ran my code through JSHint I received the following warning: 'The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.'. In order to understand how to fix this warning, I used [this Stack Overflow post](https://stackoverflow.com/questions/1963102/what-does-the-jslint-error-body-of-a-for-in-should-be-wrapped-in-an-if-statemen)
+- The solution for clearing the setTimeouts() when a user navigates back to the menu whilst the animation is playing was provided by Code Institute Support Team. The solution adds all the timeouts to a global object which allows them to be separately cleared using a loop
 
 ### Content
 
