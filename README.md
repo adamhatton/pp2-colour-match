@@ -237,6 +237,7 @@ The website uses a single image. This is background image of varying gradients b
 - [Techsini](http://techsini.com/multi-mockup/) - used to generate a multi-device mockup (as seen at the beginning of the README)
 - [Hex2RGBA](http://hex2rgba.devoth.com/) - used for converting Hex codes to rgba format
 - [Favicon](https://favicon.io/favicon-generator/) - used for creating a favicon for the site
+- [Coolors](https://coolors.co/) - used for helping to generate a colour scheme
 
 ### Testing Technologies
 
