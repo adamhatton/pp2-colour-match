@@ -5,12 +5,14 @@ Welcome to the Colour Match website!
 Colour Match is an interactive game where users have to repeat back a colour pattern that gets progressively harder with each turn, inspired by the classic game 'Simon Says'. The goals of the site are:
 
 **Site Owner**
-To provide a fun interactive game that is accessible to all age ranges for the purposes of online entertainment.
-To provide a game that is simple to pick up but still capable of providing a challenge. 
+
+- To provide a fun interactive game that is accessible to all age ranges for the purposes of online entertainment.
+- To provide a game that is simple to pick up but still capable of providing a challenge. 
 
 **Site Users**
-To play an online game that is fun and entertaining.
-To play an online game that is quick and easy to engage with.
+
+- To play an online game that is fun and entertaining.
+- To play an online game that is quick and easy to engage with.
 
 
 ![responsive mockups](docs/screenshots/responsive-mockups.jpg)
@@ -88,7 +90,7 @@ In this section I will describe each of the features of the website and their va
 #### Game Logo
 
 - The Game Logo is written in a block-style text which has friendly feel
-- When clicked, the logo changes colour. This is not advertised to the user, but is explained in one of the game-over messages (see below), so acts as a type of 'easter egg'
+- When clicked, the logo changes colour. This is not advertised to the user, but is explained in one of the game-over messages [(see game over pop-up)](<#game-over-pop-up>), so acts as a type of 'easter egg'
 - The 'hidden' interaction provides a fun and interesting moment for the user, as well as a sense of achievement if they find it without needing to be prompted by the game-over message
 
 ![game menu screenshot](docs/screenshots/logo.jpg)
@@ -96,11 +98,11 @@ In this section I will describe each of the features of the website and their va
 
 #### Game Area
 
-- The Game Area is opened with the user selects 'Play'. It consists of 2 navigation buttons, 4 coloured buttons and a score counter
+- The Game Area is opened when the user selects 'Play'. It consists of 2 navigation buttons, 4 coloured buttons and a score counter
 - It follows the same layout as the Game Menu to keep a consistent image for the game
 - When opening the Game Area, animation is used to provide a transition between the 2 areas in order to let the user know they are moving to a different part of the application
 - As with the Game Menu, the layout is responsive to different screen sizes
-- As with the Game Menu, each button has a hover effect to show that it is interactive. In addition, in this area they play a sound when pressed, so the user is not limited to interaction with the game only whilst it is running.
+- When clicked, each button will light up and play a sound. This is the case even when the game has not started, so the user is not limited to interaction with the game only whilst it is running.
 This also helps to provide the user with an immediate indication of how to interact with the game once they start it.
 - The Game Area is where the game is played. When started, the user will be shown a pattern in the form of the different coloured buttons lighting up. Each colour will also play a sound when it lights up to enhance the interactive aspect.
 Once the pattern is finished, the user can repeat it by pressing the coloured buttons.
@@ -127,6 +129,7 @@ Once the pattern is finished, the user can repeat it by pressing the coloured bu
 
 - The Game Over Pop-up is triggered when the user incorrectly inputs the pattern
 - It contains a title in the same font as the logo to make its purpose immediately clear, along with a lighthearted message to provide some encouragement/entertainment to the user
+- The message in the pop-up is chosen randomly from an array of 5 options, providing some variety to the user experience
 - The pop-up includes the user's score, so they can see how well they did
 - It also includes a close button, which has a hover effect as well as changing the cursor to a pointer to provide feedback to the user that it is interactive
 
@@ -191,7 +194,7 @@ Black and white (#000 and #fff) have been used for backgrounds and text respecti
 #### Typography
 
 The logo and headings use the font Luckiest Guy with a fall-back of Orbitron and then monospace. Luckiest Guy was chosen as it has a fun and playful feel which make it clear that the content of the website is supposed to be fun. Its block-like lettering also helps to punctuate the different sections clearly.
-The text in buttons and the score counter use the font Orbitron with a fall back of courier and then monospace. Orbitron was chosen as it has a sleek form without looking too 'corporate', allowing the buttons to be clearly labelled without being to visually noisy. 
+The text in buttons and the score counter uses the font Orbitron with a fall back of courier and then monospace. Orbitron was chosen as it has a sleek form without looking too 'corporate', allowing the buttons to be clearly labelled without being to visually noisy. 
 All other text uses the font Courier with a fall back of monospace. This font was chosen as it is very well recognised and is easy to read.
 'Luckiest Guy' and 'Orbitron' were imported from [Google Fonts](https://fonts.google.com/).
 
@@ -248,25 +251,25 @@ The website uses a single image. This is background image of varying gradients b
 
 ### User Stories
 
-**As a user I want to easily understand the purpose of the website
+**As a user I want to easily understand the purpose of the website**
 - On the landing page, the user is presented with large buttons labelled "Play", "Rules" and "High Score", making it immediately clear that it is a game ([see game menu](<#game-menu>))
-- The user is able to select the "Rules" button to be presented with a short list of rules that explain how the game works ([see game menu](<#game-menu>)) and ([rules pop-up](<#rules-pop-up>))
+- The user is able to select the "Rules" button to be presented with a short list of rules that explain how the game works (see [game menu](<#game-menu>) and [rules pop-up](<#rules-pop-up>))
 
-**As a user I want navigation and interaction to be intuitive and easy to pick up
+**As a user I want navigation and interaction to be intuitive and easy to pick up**
 - The buttons on the Game Menu page are clearly labelled with their purpose and are in line with options that a user would expect to see in a game ([see game menu](<#game-menu>))
 - All buttons provide feedback to the user that they perform an action through the use of hover and onclick effects
 - When a pop-up is used, the game can still be seen in the background to make sure the user knows they can easily get back to it
 - The screens have a minimalist design which is consistent throughout so that the user does not get lost ([see game menu](<#game-menu>)) and ([see game area](<#game-area>))
 
-**As a user I want to be able to exit the game at any point
+**As a user I want to be able to exit the game at any point**
 - When playing the game, the user is able to return to the menu at any point, including whilst an animation is playing. This will stop the game and reset the variables so that they do not feel trapped
 
-**As a user I want to be able to keep track of how well I am doing at the game
+**As a user I want to be able to keep track of how well I am doing at the game**
 - When playing the game there is a level counter which displays the level that the user is on ([see score counter](<#score-counter>))
 - When a game is finished the user is presented with a popup which shows them their score for that particular game ([see game over pop-up](<#game-over-pop-up>))
 - There is a highscore button on the Game Menu which allows a user to see their best score so far ([see game menu](<#game-menu>)) and ([see high score pop-up](<#high-score-pop-up>))
 
-**As a user I want the website to be responsive to the device I am using it on
+**As a user I want the website to be responsive to the device I am using it on**
 - Due to the simple design, the game displays consistently across all devices
 - Media queries have been used to change the layout from a 2x2 grid to a 1x4 grid when screen height drops below a certain value
 
@@ -274,8 +277,9 @@ The website uses a single image. This is background image of varying gradients b
 
 #### Validation
 
-**HTML
-The website was run through the [W3C HTML validator](https://validator.w3.org/). No errors were found (see below screenshot).
+**HTML**
+
+- The website was run through the [W3C HTML validator](https://validator.w3.org/). No errors were found (see below screenshot).
 
 <details><summary>HTML Validation</summary>
 
@@ -283,7 +287,8 @@ The website was run through the [W3C HTML validator](https://validator.w3.org/).
 
 </details>
 
-**CSS
+**CSS**
+
 - The website was run through the [Jigsaw CSS validator](https://jigsaw.w3.org/css-validator/). No errors were found (see below screenshot).
 
 <details><summary>CSS Validation</summary>
@@ -292,7 +297,7 @@ The website was run through the [W3C HTML validator](https://validator.w3.org/).
 
 </details>
 
-**JavaScript
+**JavaScript**
 - The JavaScript code was run through [JSHint](https://jshint.com/) configured to 'assume new JavaScript features (ES6)'. This produced no errors, but did produce the following warning in 2 places: "Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (colour, playSound)".
 Due to the complexity of the function involved, I decided to leave this and instead rely on the function comments to clarify:
 
@@ -303,7 +308,7 @@ Due to the complexity of the function involved, I decided to leave this and inst
 </details>
 
 
-**Accessibility
+**Accessibility**
 - The website was run through the [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/). No errors were highlighted (see below screenshot), however 4 alerts were produced relating to the audio elements on the page. To resolve these alerts a transcript would be needed, however the sounds in question
 are simply sound effects and it does not impact the playability of the game in anyway if they do not play. As such, these alerts were ignored.
 
@@ -329,7 +334,7 @@ shadow which increases the contrast ratio, but this is not picked up by automate
 
 </details>
 
-**Lighthouse
+**Lighthouse**
 - Each page of the website was run through [Lighthouse](https://developers.google.com/web/tools/lighthouse) to analyse the performance, accessibility, best practices and SEO of the site. Initially the accessibility score was 89 due to the following errors:
 
 <details><summary>Lighthouse Test</summary>
@@ -379,6 +384,7 @@ The following tests were made on a desktop using 3 separate browsers: Chrome, Ed
 
 ## Bugs
 **Firefox Sound bug**
+
 When testing the game on Firefox, I encountered an issue whereby the sound files sounded distorted and although they could be played rapidly it did not provide as smooth an experience as on other browsers.
 To fix this I changed the audio files from .mp3 to .ogg. For example, where the sounds were previously:
 ~~~
@@ -393,13 +399,14 @@ const redSound2 = new Audio('assets/sounds/red-sound.ogg');
 After restesting, this produced a much better experience on Firefox and did not impact the playback on other browsers.
 
 **Repeat Sound Not Playing**
-During development I found a bug that when the animation was being shown and a colour was repeated, the sound would repeat (due to the length of the audio file).
+
+During development I found a bug that when the animation was being shown and a colour was repeated, the sound would not repeat correctly (due to the length of the audio file).
 Initially, I was playing the sound by just calling play() on the element:
 ~~~
 document.getElementById(`${colour}-sound`).play();
 ~~~
 In order to fix this bug I researched how to play overlapping sounds and found that I needed multiple audio objects containing the same sound.
-I created 2 versions of each sound and added these to an array for all my sounds. I then created 2 variables to be used when playing the sound which would be assigned values from the sounds array. These were set so that when one sound is being played and the button is pressed again, the original sound gets paused and the second version of the sound is played, as below:
+I created 2 versions of each sound and added these to an array containing all my sounds. I then created 2 variables to be used when playing the sound which would be assigned values from the sounds array. These were set so that when one sound is being played and the button is pressed again, the original sound gets paused and the second version of the sound is played, as below:
 ~~~
             if (button.getAttribute('data-colour') === 'red') {
                 sound1 = sounds[0];
@@ -430,6 +437,7 @@ I created 2 versions of each sound and added these to an array for all my sounds
 This allowed the sound to be played correctly when being repeated in a pattern. In the final version of my code, I refactored this code into a function and renamed the variables to be more descriptive.
 
 **Game Over Bug**
+
 During development I encountered a bug whereby if a user had played a game and then pressed one of the coloured buttons, it triggered the game over screen to show.
 The checkPlayerInput() function is called when the buttons are active and the array used for the animation sequence has a length greater than one, and if the input is incorrect the gameOver() function will be called it will show the game over screen.
 However, the gameOver() function did not reset the array back to being empty, therefore when clicking the buttons after a game had ended, it was calling checkPlayerInput() unexpectedly.
@@ -485,4 +493,4 @@ To fork the repository, please follow the below steps:
 ### Acknowledgements
 
 - I'd like to thank my mentor Spencer Barriball for his guidance in the planning stage of the project and feedback on the finished product
-- I'd also like to thank my Partner Nichola for her constant support and feedback on what I was creating
+- I'd also like to thank my partner Nichola for her constant support and feedback on what I was creating
